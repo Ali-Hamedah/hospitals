@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\SectionController;
 
 
 
@@ -41,6 +42,18 @@ Route::group(
 
     //################################ end dashboard admin #####################################
 
+
+    //---------------------------------------------------------------------------------------------------------------
+
+
+    Route::middleware(['auth:admin'])->group(function () {
+
+        //############################# sections route ##########################################
+
+            Route::resource('Sections', SectionController::class);
+
+        //############################# end sections route ######################################
+    });
 
 require __DIR__.'/auth.php';
 
