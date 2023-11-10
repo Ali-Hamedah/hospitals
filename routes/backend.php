@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\SectionController;
 
 
@@ -53,6 +54,12 @@ Route::group(
             Route::resource('Sections', SectionController::class);
 
         //############################# end sections route ######################################
+
+          //############################# Doctors route ##########################################
+
+          Route::resource('Doctors', DoctorController::class);
+
+          //############################# end Doctors route ######################################
     });
 
 require __DIR__.'/auth.php';
