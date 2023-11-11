@@ -24,6 +24,7 @@ class CreateSectionTranslationsTable extends Migration
 
        // fields you want to translate
        $table->string('name');
+       $table->longText('description');
 
         });
     }
