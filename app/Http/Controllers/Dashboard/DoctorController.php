@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Doctors;
 use App\Models\Doctor;
+use App\Models\Section;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
-use App\Models\Section;
 
 class DoctorController extends Controller
 {
@@ -48,15 +49,15 @@ class DoctorController extends Controller
     }
 
 
-    public function edit(Request $request)
+    public function edit($id)
     {
-        return $this->doctors->edit($request);
+        return $this->doctors->edit($id);
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        return $request;
+        return $this->doctors->update($request);
     }
 
 
@@ -64,4 +65,24 @@ class DoctorController extends Controller
     {
        return $this->doctors->destroy($request);
     }
+
+
+    public function update_password(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6'
+        ]);
+
+        return $this->doctors->update_password($request);
+    }
+
+    public function update_status(Request $request)
+    {
+        $this->validate($request, [
+            'status' => 'required|in:0,1',
+        ]);
+        return $this->doctors->update_status($request);
+    }
+
 }

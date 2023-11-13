@@ -19,7 +19,8 @@ class DoctorRepository implements DoctorRepositoryInterface
 
     public function index()
     {
-        $doctors = Doctor::all();
+       // $doctors = Doctor::all();
+        $doctors = Doctor::with('doctorappointments')->get();
         return view('Dashboard.Doctors.index', compact('doctors'));
     }
 
@@ -42,7 +43,6 @@ class DoctorRepository implements DoctorRepositoryInterface
             $doctors->password = Hash::make($request->password);
             $doctors->section_id = $request->section_id;
             $doctors->phone = $request->phone;
-            $doctors->price = $request->price;
             $doctors->status = 1;
             $doctors->save();
             // store trans
@@ -64,12 +64,12 @@ class DoctorRepository implements DoctorRepositoryInterface
     }
 
 
-    public function edit($request)
+    public function edit($id)
     {
-        $doctors = Doctor::findorfail($request);
         $sections = Section::all();
-        $appointments  = Appointment::all();
-        return view('Dashboard.Doctors.edit', compact('doctors', 'Section', 'appointments '));
+        $appointments = Appointment::all();
+        $doctor = Doctor::findorfail($id);
+        return view('Dashboard.Doctors.edit',compact('sections','appointments','doctor'));
     }
 
 
@@ -90,12 +90,98 @@ class DoctorRepository implements DoctorRepositoryInterface
            //---------------------------------------------------------------
 
            else{
+    // delete selector doctor
+    $delete_select_id = explode(",", $request->delete_select_id);
+    foreach ($delete_select_id as $ids_doctors){
+        $doctor = Doctor::findorfail($ids_doctors);
+        if($doctor->image){
+            $this->Delete_attachment('upload_image','doctors/'.$doctor->image->filename,$ids_doctors,$doctor->image->filename);
+        }
+    }
 
+    Doctor::destroy($delete_select_id);
+    session()->flash('delete');
+    return redirect()->route('Doctors.index');
 
 
            }
-
-
-
          }
+
+
+         public function update($request)
+         {
+            DB::beginTransaction();
+
+            try {
+
+                $doctor = Doctor::findorfail($request->id);
+
+                $doctor->email = $request->email;
+                $doctor->section_id = $request->section_id;
+                $doctor->phone = $request->phone;
+                $doctor->save();
+                // store trans
+                $doctor->name = $request->name;
+                $doctor->save();
+
+                // update pivot tABLE
+                $doctor->doctorappointments()->sync($request->appointments);
+
+                // update photo
+                if ($request->has('photo')){
+                    // Delete old photo
+                    if ($doctor->image){
+                        $old_img = $doctor->image->filename;
+                        $this->Delete_attachment('upload_image','doctors/'.$old_img,$request->id);
+                    }
+                    //Upload img
+                    $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$request->id,'App\Models\Doctor');
+                }
+
+                DB::commit();
+                session()->flash('edit');
+                return redirect()->back();
+
+            }
+            catch (\Exception $e) {
+                DB::rollback();
+                return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            }
+         }
+
+
+    public function update_password($request)
+    {
+        try {
+            $doctor = Doctor::findorfail($request->id);
+            $doctor->update([
+                'password'=>Hash::make($request->password)
+            ]);
+
+            session()->flash('edit');
+            return redirect()->back();
+        }
+
+        catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function update_status($request)
+    {
+        try {
+            $doctor = Doctor::findorfail($request->id);
+            $doctor->update([
+                'status'=>$request->status
+            ]);
+
+            session()->flash('edit');
+            return redirect()->back();
+        }
+
+        catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
 }

@@ -11,6 +11,8 @@ interface SectionRepositoryInterface
 
    public function update($request);
 
+   public function show($id);
+
    public function destroy($request);
 
 
