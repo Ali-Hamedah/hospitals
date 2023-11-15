@@ -10,16 +10,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="#" method="post">
-
+            <form action="#" method="#">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <h5>يرجى تحديد عناصر لحذفها</h5>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">{{ trans('Dashboard/sections_trans.Close') }}</button>
                 </div>
             </form>
         </div>

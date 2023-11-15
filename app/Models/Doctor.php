@@ -12,7 +12,7 @@ class Doctor extends Model
 {
     use Translatable;
     use HasFactory;
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['name', 'appointments'];
     public $fillable= ['email','email_verified_at','password','phone','name', 'status'];
 
     /**
@@ -30,8 +30,7 @@ class Doctor extends Model
 
 public function doctorappointments()
 {
-return $this->belongsToMany(Appointment::class);
+    return $this->belongsToMany(Appointment::class,'appointment_doctor');
 }
-
 
 }

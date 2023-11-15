@@ -19,5 +19,6 @@ class Section extends Model
     {
         return $this->hasMany(Doctor::class);
     }
+    
 }
 

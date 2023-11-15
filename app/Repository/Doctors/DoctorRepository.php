@@ -47,8 +47,9 @@ class DoctorRepository implements DoctorRepositoryInterface
             $doctors->save();
             // store trans
             $doctors->name = $request->name;
-            $doctors->appointments = implode(",", $request->appointments);
             $doctors->save();
+              // insert pivot tABLE
+              $doctors->doctorappointments()->attach($request->appointments);
 
 
             //Upload img
@@ -183,5 +184,7 @@ class DoctorRepository implements DoctorRepositoryInterface
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+    
 
 }
