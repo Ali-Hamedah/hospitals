@@ -70,6 +70,13 @@ Route::group(
         Route::resource('Service', SingleServiceController::class);
 
         //############################# end Service route ######################################
+        
+
+                 //############################# GroupServices route ##########################################
+
+        Route::view('Add_GroupServices','livewire.GroupServices.include_create')->name('Add_GroupServices');
+
+        //############################# end GroupServices route ######################################
 
 
 
