@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
 
 
@@ -65,18 +66,24 @@ Route::group(
           //############################# end Doctors route ######################################
 
 
-                //############################# Service route ##########################################
+         //############################# Service route ##########################################
 
         Route::resource('Service', SingleServiceController::class);
 
         //############################# end Service route ######################################
-        
+
 
                  //############################# GroupServices route ##########################################
 
         Route::view('Add_GroupServices','livewire.GroupServices.include_create')->name('Add_GroupServices');
 
         //############################# end GroupServices route ######################################
+
+        //############################# insurance route ##########################################
+
+        Route::resource('insurance', InsuranceController::class);
+
+        //############################# end insurance route ######################################
 
 
 
