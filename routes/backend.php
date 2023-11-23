@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DoctorController;
+use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
 
@@ -84,6 +86,18 @@ Route::group(
         Route::resource('insurance', InsuranceController::class);
 
         //############################# end insurance route ######################################
+
+        //############################# insurance route ##########################################
+
+        Route::resource('ambulance', AmbulanceController::class);
+
+        //############################# end insurance route ######################################
+
+         //############################# insurance route ##########################################
+
+         Route::resource('Patients', PatientController::class);
+
+         //############################# end insurance route ######################################
 
 
 

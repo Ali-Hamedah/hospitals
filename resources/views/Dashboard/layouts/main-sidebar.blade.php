@@ -52,15 +52,15 @@
                             <li><a class="slide-item" href="{{ route('Service.index') }}">{{trans('main-sidebar_trans.Single_service')}}</a></li>
                             <li><a class="slide-item" href="{{ route('Add_GroupServices') }}">{{trans('main-sidebar_trans.group_services')}}</a></li>
                             <li><a class="slide-item" href="{{ route('insurance.index') }}">{{trans('main-sidebar_trans.Insurance')}}</a></li>
-                            <li><a class="slide-item" href="{{ url('/' . $page='rangeslider') }}">{{trans('main-sidebar_trans.ambulance')}}</a></li>
+                            <li><a class="slide-item" href="{{ route('ambulance.index') }}">{{trans('main-sidebar_trans.ambulance')}}</a></li>
                             <li><a class="slide-item" href="{{ url('/' . $page='calendar') }}">{{trans('main-sidebar_trans.Ambulance_calls')}}</a></li>
 						</ul>
 					</li>
 					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3"/><path d="M19.37 12.8l-7.38 5.74-7.37-5.73L3 14.07l9 7 9-7zM12 2L3 9l1.63 1.27L12 16l7.36-5.73L21 9l-9-7zm0 11.47L6.26 9 12 4.53 17.74 9 12 13.47z"/></svg><span class="side-menu__label">Elements</span><i class="angle fe fe-chevron-down"></i></a>
+						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3"/><path d="M19.37 12.8l-7.38 5.74-7.37-5.73L3 14.07l9 7 9-7zM12 2L3 9l1.63 1.27L12 16l7.36-5.73L21 9l-9-7zm0 11.47L6.26 9 12 4.53 17.74 9 12 13.47z"/></svg><span class="side-menu__label">المرضى</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{ url('/' . $page='alerts') }}">Alerts</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='avatar') }}">Avatar</a></li>
+							<li><a class="slide-item" href="{{ route('Patients.create') }}">اضافة مريض</a></li>
+							<li><a class="slide-item" href="{{ route('Patients.index') }}">قائمة المرضئ</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='breadcrumbs') }}">Breadcrumbs</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='buttons') }}">Buttons</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='badge') }}">Badge</a></li>
