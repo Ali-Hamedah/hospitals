@@ -12,4 +12,5 @@ return array (
   'index' => 'الرئيسية',
   'sections' => 'الاقسام',
   'view_all' => 'عرض الكل',
+  'Accounts' => ' الحسابات',
 );

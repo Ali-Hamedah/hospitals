@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\PatientTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             SectionTableSeeder::class,
             DoctorTableSeeder::class,
             ImageTableSeeder::class,
+            PatientTableSeeder::class,
 
         ]);
     }
