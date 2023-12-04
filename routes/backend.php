@@ -124,6 +124,14 @@ Route::group(
 
              //############################# end Payment route ######################################
 
+              //############################# group_invoices route ##########################################
+
+        Route::view('group_invoices','livewire.Group_invoices.index')->name('group_invoices');
+
+        Route::view('group_Print_single_invoices','livewire.Group_invoices.print')->name('group_Print_single_invoices');
+
+        //############################# end group_invoices route ######################################
+
 
 
     });

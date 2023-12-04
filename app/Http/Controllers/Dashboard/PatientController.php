@@ -22,6 +22,11 @@ class PatientController extends Controller
         return $this->Patients->index();
     }
 
+    public function Show($id)
+    {
+        return $this->Patients->Show($id);
+    }
+
 
 
     public function create()

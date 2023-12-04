@@ -52,7 +52,8 @@
                                 @foreach ($patients as $patient)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $patient->name }}</td>
+                                        {{-- <td>{{ $patient->name }}</td> --}}
+                                        <td><a href="{{ route('Patients.show', $patient->id) }}">{{ $patient->name }}</a></td>
                                         <td>{{ $patient->email }}</td>
                                         <td>{{ $patient->Date_Birth }}</td>
                                         <td>{{ $patient->Phone }}</td>
@@ -88,7 +89,7 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
- 
+
 
     <!--Internal  Notify js -->
     <script src="{{ URL::asset('dashboard/plugins/notify/js/notifIt.js') }}"></script>

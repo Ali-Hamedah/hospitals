@@ -8,6 +8,8 @@ interface PatientRepositoryInterface
 {
     // Get All Patients
     public function index();
+ // Show Patients
+    public function Show($id);
     // Create New Patients
     public function create();
     // Store new Patients
