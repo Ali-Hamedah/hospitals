@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Section;
-use App\Models\Appointment;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Doctor extends Model
+class Doctor extends Authenticatable
 {
     use Translatable;
     use HasFactory;
-    public $translatedAttributes = ['name', 'appointments'];
-    public $fillable= ['email','email_verified_at','password','phone','name', 'status'];
+    public $translatedAttributes = ['name','appointments'];
+    public $fillable= ['email','email_verified_at','password','phone','name','section_id','status'];
+    //protected $guarded=[];
 
     /**
      * Get the Doctor's image.
@@ -23,14 +23,16 @@ class Doctor extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    // One To One get section of Doctor
     public function section()
-{
-    return $this->belongsTo(Section::class);
-}
+    {
+        return $this->belongsTo(Section::class);
+    }
 
-public function doctorappointments()
-{
-    return $this->belongsToMany(Appointment::class,'appointment_doctor');
-}
+    public function doctorappointments()
+    {
+        return $this->belongsToMany(Appointment::class,'appointment_doctor');
+    }
+
 
 }

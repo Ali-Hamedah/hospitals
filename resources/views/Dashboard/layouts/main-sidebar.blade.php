@@ -52,7 +52,7 @@
                             <li><a class="slide-item" href="{{ route('Service.index') }}">{{trans('main-sidebar_trans.Single_service')}}</a></li>
                             <li><a class="slide-item" href="{{ route('Add_GroupServices') }}">{{trans('main-sidebar_trans.group_services')}}</a></li>
                             <li><a class="slide-item" href="{{ route('insurance.index') }}">{{trans('main-sidebar_trans.Insurance')}}</a></li>
-                            <li><a class="slide-item" href="{{ route('ambulance.index') }}">{{trans('main-sidebar_trans.ambulance')}}</a></li>
+                            <li><a class="slide-item" href="{{ route('Ambulance.index') }}">{{trans('main-sidebar_trans.ambulance')}}</a></li>
                             <li><a class="slide-item" href="{{ url('/' . $page='calendar') }}">{{trans('main-sidebar_trans.Ambulance_calls')}}</a></li>
 						</ul>
 					</li>
@@ -72,7 +72,7 @@
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{ route('single_invoices') }}">فاتورة خدمة مفردة</a></li>
                             <li><a class="slide-item" href="{{ route('group_invoices') }}">فاتورة مجموعة خدمات</a></li>
-				
+
 						</ul>
 					</li>
 					<li class="slide">

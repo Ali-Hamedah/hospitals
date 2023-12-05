@@ -1,5 +1,9 @@
 <?php
 
+
+
+
+
 return [
 
     /*
@@ -45,6 +49,11 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+
+        'doctor' => [
+            'driver' => 'session',
+            'provider' => 'doctors', // اسم موفر البيانات المستخدم للحارس (يجب أن يكون معرفًا في providers)
+        ],
     ],
 
     /*
@@ -73,6 +82,12 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Doctor::class, // تحديد نموذج الطبيب الخاص بك
         ],
 
         // 'users' => [

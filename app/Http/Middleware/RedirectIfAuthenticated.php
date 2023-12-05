@@ -13,12 +13,12 @@ class RedirectIfAuthenticated
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param  \Closure  $next
      * @param  string|null  ...$guards
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next, ...$guards)
-    {
+    public function handle($request, Closure $next){
+
         if (auth('web')->check()){
             return redirect(RouteServiceProvider::HOME);
         }
@@ -26,6 +26,11 @@ class RedirectIfAuthenticated
         if (auth('admin')->check()){
             return redirect(RouteServiceProvider::ADMIN);
         }
+
+        if (auth('doctor')->check()){
+            return redirect(RouteServiceProvider::DOCTOR);
+        }
+
         return $next($request);
     }
 }

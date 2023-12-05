@@ -22,14 +22,14 @@ class PatientFactory extends Factory
 
         return [
 
-            'name' => $this->faker->name,
-            'Address' => $this->faker->paragraph,
+          'name' => $this->faker->name,
+            'Address' => $this->faker->paragraph($numberOfWords = 3), // تحديد عدد الكلمات في العنوان (هنا 10 كلمات)
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // كلمة المرور
             'phone' => $this->faker->phoneNumber,
             'Date_Birth' => $this->faker->dateTimeBetween('1950-01-01', 'now-18years')->format('Y-m-d'),
-            'Gender' => $this->faker->randomElement(['  دكر',' انثى']),
-            'Blood_Group' => $this->faker->randomElement(['O+','O-','A+','A-','B+','B-','AB+','AB-']),
+            'Gender' => $this->faker->randomElement(['  دكر', ' انثى']),
+            'Blood_Group' =>$this->faker->randomElement(['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-']),
         ];
     }
 }
