@@ -104,7 +104,7 @@
                                                     @foreach($invoices as $invoice)
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
-                                                            <td>{{$invoice->Service->name}}</td>
+                                                            <td>{{$invoice->Service->name ?? $invoice->Group->name}}</td>
                                                             <td>{{$invoice->invoice_date}}</td>
                                                             <td>{{$invoice->total_with_tax}}</td>
                                                             <td>{{$invoice->type == 1 ? 'نقدي' : 'اجل'}}</td>
@@ -178,7 +178,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($Patient_accounts as $Patient_account)
+                                                        @foreach($Patient_accounts as $Patient_account)
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
                                                             <td>{{$Patient_account->date}}</td>
@@ -213,7 +213,7 @@
                                                                     echo number_format($balance, 2) . ' ' . ($balance == 0 ? '' : ($balance > 0 ? 'مدين' : 'دائن'));
                                                                 @endphp
                                                             </span>
-                                                        </td>                                                  
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
