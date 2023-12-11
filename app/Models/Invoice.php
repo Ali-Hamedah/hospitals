@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Invoice extends Model
 {
     use HasFactory;
+
+    protected $guarded=[];
 
 
    public function Group()
@@ -34,5 +37,6 @@ return $this->belongsTo(Doctor::class, 'doctor_id');
     {
 return $this->belongsTo(Section::class, 'section_id');
     }
+
 
 }

@@ -11,8 +11,8 @@ class Doctor extends Authenticatable
 {
     use Translatable;
     use HasFactory;
-    public $translatedAttributes = ['name','appointments'];
-    public $fillable= ['email','email_verified_at','password','phone','name','section_id','status'];
+    public $translatedAttributes = ['name', 'appointments'];
+    public $fillable = ['email', 'email_verified_at', 'password', 'phone', 'name', 'section_id', 'status'];
     //protected $guarded=[];
 
     /**
@@ -31,8 +31,6 @@ class Doctor extends Authenticatable
 
     public function doctorappointments()
     {
-        return $this->belongsToMany(Appointment::class,'appointment_doctor');
+        return $this->belongsToMany(Appointment::class, 'appointment_doctor');
     }
-
-
 }
