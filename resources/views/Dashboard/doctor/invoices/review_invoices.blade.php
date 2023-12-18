@@ -1,19 +1,9 @@
-@extends('Dashboard.layouts.doctor.master-doctor')
+@extends('Dashboard.layouts.master')
 @section('title')
     الكشوفات
 @stop
 @section('css')
-    <style>
-        .time-field .hour {
-            color: red;
-            /* لون الساعات */
-        }
 
-        .time-field .minute {
-            color: red;
-            /* لون الدقائق */
-        }
-    </style>
     <!-- Internal Data table css -->
     <link href="{{ URL::asset('Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <!--Internal   Notify -->
@@ -64,7 +54,6 @@
                                     <th>حالة الفاتورة</th>
                                     <th> تاريخ المراجعه</th>
                                     <th>العمليات</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,20 +62,13 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $invoice->invoice_date }}</td>
                                         <td>
-
                                             @if (($invoice->Service && $invoice->Service->locale == 'ar') || ($invoice->Group && $invoice->Group->locale == 'ar'))
                                                 {{ $invoice->Service->name ?? $invoice->Group->name }}
                                             @else
                                                 يجب إضافة الترجمة
                                             @endif
-
                                         </td>
-                                        <td>
-                                            <a href="{{ route('patient_details', $invoice->id) }}"
-                                                class="your-link-styles">
-                                                {{ $invoice->Patient->name }}
-                                            </a>
-                                        </td>
+                                        <td><a href="{{route('patient_details',$invoice->patient_id)}}">{{ $invoice->Patient->name }}</a></td>
                                         <td>{{ number_format($invoice->price, 2) }}</td>
                                         <td>{{ number_format($invoice->discount_value, 2) }}</td>
                                         <td>{{ $invoice->tax_rate }}%</td>
@@ -102,10 +84,12 @@
                                             @endif
                                         </td>
                                         <td style="color: red">
-                                            {{ \App\Models\Diagnostic::where(['invoice_id' => $invoice->id])->first()->review_date }}
+                                            @if (\App\Models\Diagnostic::where(['invoice_id' => $invoice->id])->first()->review_date)
+                                                {{ \App\Models\Diagnostic::where(['invoice_id' => $invoice->id])->first()->review_date }}
+                                            @else
+                                                لا يوجد مراجعه
+                                            @endif
                                         </td>
-
-
                                         <td>
                                             <div class="dropdown show">
                                                 <a class="btn btn-primary btn-sm dropdown-toggle" href="#"
@@ -115,8 +99,9 @@
                                                     العمليات
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" data-target="#add_ff{{ $invoice->id }}"
-                                                        data-toggle="modal" href="#add_ff{{ $invoice->id }}">
+                                                    <a class="dropdown-item"
+                                                        data-target="#add_diagnosis{{ $invoice->id }}" data-toggle="modal"
+                                                        href="#add_ff{{ $invoice->id }}">
                                                         <i class="fas fa-stethoscope" style="color: #0000cc"></i>&nbsp;
                                                         <span class="d-inline-block">اضافة تشخيص </span>
                                                     </a>
@@ -125,11 +110,14 @@
                                                         <i class="fa fa-plus-circle" style="color: green"></i>&nbsp; اضافة
                                                         مراجعة
                                                     </a>
-                                                    <a class="dropdown-item" href="#">
+                                                    <a class="dropdown-item" data-target="#add_ray{{ $invoice->id }}"
+                                                        data-toggle="modal" href="#">
                                                         <i class="fas fa-radiation" style="color: #0000cc"></i>&nbsp; تحويل
                                                         الى الاشعة
                                                     </a>
-                                                    <a class="dropdown-item" href="#">
+                                                    <a class="dropdown-item"
+                                                        data-target="#add_laboratorie{{ $invoice->id }}"
+                                                        data-toggle="modal" href="#">
                                                         <i class="fas fa-microscope" style="color: #007BFF"></i>&nbsp; تحويل
                                                         الى المختبر
                                                     </a>
@@ -140,12 +128,11 @@
                                                 </div>
                                             </div>
                                         </td>
-
-
-
-
                                     </tr>
                                     @include('Dashboard.doctor.invoices.add_diagnosis')
+                                    @include('Dashboard.doctor.invoices.add_review')
+                                    @include('Dashboard.doctor.invoices.add_ray')
+                                    @include('Dashboard.doctor.invoices.add_laboratorie')
                                     @include('Dashboard.doctor.invoices.delete')
                                 @endforeach
                             </tbody>

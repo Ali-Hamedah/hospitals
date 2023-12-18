@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\doctor\InvoiceController;
 use App\Http\Controllers\Dashboard_Doctor\RayController;
 use App\Http\Controllers\Dashboard_Doctor\DiagnosticController;
+use App\Http\Controllers\Dashboard_Doctor\LaboratorieController;
 use App\Http\Controllers\Dashboard_Doctor\PatientDetailsController;
 
 /*
@@ -39,6 +40,7 @@ Route::group(
 
 
         Route::middleware(['auth:doctor'])->group(function () {
+            Route::view('404','Dashboard.404')->name('404');
 
             // Route::prefix('doctor')->group(function () {
             //     Route::resource('invoices', InvoiceController::class);
@@ -72,6 +74,12 @@ Route::group(
                  //############################# ray route ##########################################
                  Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->name('patient_details');
                  //############################# ray route ##########################################
+
+                //  Route::get('/invoice_get/{id}', [InvoiceController::class, 'invoiceGet'])->name('invoice_get');
+
+                   //############################# laboratories route ##########################################
+                Route::resource('laboratories', LaboratorieController::class);
+                //############################# end laboratories route ##########################################
 
             });
         });

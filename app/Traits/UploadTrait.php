@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 trait UploadTrait{
 
+   
     public function verifyAndStoreImage(Request $request, $inputname , $foldername , $disk, $imageable_id, $imageable_type) {
 
         if( $request->hasFile( $inputname ) ) {
@@ -35,6 +36,17 @@ trait UploadTrait{
 
         return null;
 
+    }
+
+    public function verifyAndStoreImageForeach($varforeach , $foldername , $disk, $imageable_id, $imageable_type) {
+
+        // insert Image
+        $Image = new Image();
+        $Image->filename = $varforeach->getClientOriginalName();
+        $Image->imageable_id = $imageable_id;
+        $Image->imageable_type = $imageable_type;
+        $Image->save();
+        return $varforeach->storeAs($foldername, $varforeach->getClientOriginalName(), $disk);
     }
 
     public function Delete_attachment($disk,$path,$id){

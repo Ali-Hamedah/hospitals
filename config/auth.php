@@ -52,7 +52,12 @@ return [
 
         'doctor' => [
             'driver' => 'session',
-            'provider' => 'doctors', // اسم موفر البيانات المستخدم للحارس (يجب أن يكون معرفًا في providers)
+            'provider' => 'doctors',
+        ],
+
+        'ray_employee' => [
+            'driver' => 'session',
+            'provider' => 'ray_employees',
         ],
     ],
 
@@ -87,7 +92,12 @@ return [
 
         'doctors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Doctor::class, // تحديد نموذج الطبيب الخاص بك
+            'model' => App\Models\Doctor::class, 
+        ],
+
+        'ray_employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\RayEmployee::class,
         ],
 
         // 'users' => [

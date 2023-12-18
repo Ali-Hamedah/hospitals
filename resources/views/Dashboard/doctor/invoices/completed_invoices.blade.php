@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.doctor.master-doctor')
+@extends('Dashboard.layouts.master')
 @section('title')
    الكشوفات
 @stop
@@ -67,11 +67,7 @@
                                                         @endif
 
                                                 </td>
-                                                   <td>
-                                                    <a href="{{ route('patient_details', $invoice->id) }}" class="your-link-styles">
-                                                    {{ $invoice->Patient->name }}
-                                                    </a>
-                                                </td>
+                                                <td><a href="{{route('patient_details',$invoice->patient_id)}}">{{ $invoice->Patient->name }}</a></td>
                                                    <td>{{ number_format($invoice->price, 2) }}</td>
                                                    <td>{{ number_format($invoice->discount_value, 2) }}</td>
                                                    <td>{{ $invoice->tax_rate }}%</td>

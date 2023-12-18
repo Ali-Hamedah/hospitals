@@ -9,9 +9,6 @@ interface InvoicesRepositoryInterface
 
     public function completedInvoices();
 
-    public function create();
-
-
     public function store($request);
 
     public function reviewInvoices();
@@ -24,6 +21,4 @@ interface InvoicesRepositoryInterface
     public function update($request, $id);
 
     public function destroy($id);
-
-
 }

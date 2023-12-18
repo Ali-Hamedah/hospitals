@@ -24,4 +24,20 @@ return array (
   'section' => 'القسم',
   'submit' => 'تاكيد',
   'update_password' => 'تغير كلمة المرور',
+  'List_statements' => ' قائمة الكشوفات',
+  'List_completed_statements' => 'قائمة الكشوفات المكتمله',
+  'List_reviews' => 'قائمة المراجعات  ',
+
+  'Number_invoices' => 'عدد الفواتير',
+  'Number_invoices_under_procedure' => 'عدد الفواتير تحت الاجراء ',
+  'Number_completed_invoices' => ' عدد الفواتير المكتملة',
+  'Number_reviews_invoices' => '  عدد فواتير المراجعات',
+
+
+
+
+
+
+
+
 );

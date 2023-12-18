@@ -2,6 +2,7 @@
 
 namespace App\Repository\doctor_dashboard;
 
+use App\Models\Ray;
 use App\Models\Invoice;
 use App\Models\Diagnostic;
 use Illuminate\Support\Carbon;
@@ -21,38 +22,43 @@ class InvoicesRepository implements InvoicesRepositoryInterface
         // ->whereDate('invoice_date', '>=', Carbon::now()->toDateString())
         // ->get();
 
-        $invoices = Invoice::where('doctor_id', Auth::user()->id)->where('invoice_status',1)->get();
+        $invoices = Invoice::where('doctor_id', Auth::user()->id)->where('invoice_status', 1)->get();
         return view('Dashboard.Doctor.invoices.index', compact('invoices'));
     }
 
     public function completedInvoices()
     {
 
-        $invoices = Invoice::where('doctor_id', Auth::user()->id)->where('invoice_status',3)->get();
+        $invoices = Invoice::where('doctor_id', Auth::user()->id)->where('invoice_status', 3)->get();
         return view('Dashboard.doctor.invoices.completed_invoices', compact('invoices'));
     }
 
-       public function reviewInvoices()
-       {
-
-        $invoices = Invoice::where('doctor_id', Auth::user()->id)->where('invoice_status',2)->get();
-        return view('Dashboard.doctor.invoices.review_invoices', compact('invoices'));
-          }
-
-    public function create()
+    public function reviewInvoices()
     {
-        //
+
+        $invoices = Invoice::where('doctor_id', Auth::user()->id)->where('invoice_status', 2)->get();
+        return view('Dashboard.doctor.invoices.review_invoices', compact('invoices'));
     }
+
 
 
     public function store($request)
     {
-
     }
 
     public function show($id)
     {
-        //
+        $rays = Ray::findOrFail($id);
+
+
+
+        $rays = Ray::findorFail($id);
+        if ($rays->doctor_id != auth()->user()->id) {
+            //abort(404);
+            return redirect()->route('404');
+        }
+
+        return view('Dashboard.doctor.invoices.view_rays', compact('rays'));
     }
 
 
@@ -72,5 +78,4 @@ class InvoicesRepository implements InvoicesRepositoryInterface
         session()->flash('delete');
         return redirect()->route('invoices.index');
     }
-
 }

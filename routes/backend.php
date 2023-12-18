@@ -1,15 +1,19 @@
 <?php
 
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\DoctorController;
+use App\Http\Controllers\Dashboard\PatientController;
+use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\InsuranceController;
-use App\Http\Controllers\Dashboard\PatientController;
+use App\Http\Controllers\Dashboard\RayEmployeeController;
+use App\Http\Controllers\Dashboard\SingleServiceController;
 use App\Http\Controllers\Dashboard\PaymentAccountController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
-use App\Http\Controllers\Dashboard\SectionController;
-use App\Http\Controllers\Dashboard\SingleServiceController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\LaboratorieEmployeeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +58,7 @@ Route::group(
 
 
     Route::middleware(['auth:admin'])->group(function () {
+        Route::view('404','Dashboard.404')->name('404');
 
     //############################# sections route ##########################################
 
@@ -132,6 +137,18 @@ Route::group(
 
         //############################# end single_invoices route ######################################
 
+          //############################# RayEmployee route ##########################################
+
+        Route::resource('ray_employee', RayEmployeeController::class);
+
+        //############################# end RayEmployee route ######################################
+
+        //############################# RayEmployee route ##########################################
+
+        Route::resource('laboratorie_employee', LaboratorieEmployeeController::class);
+
+        //############################# end RayEmployee route ######################################
+
 
 
 
@@ -139,7 +156,10 @@ Route::group(
     });
 
 
+
     require __DIR__.'/auth.php';
 
 
 });
+
+

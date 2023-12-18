@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.doctor.master-doctor')
+@extends('Dashboard.layouts.master')
 @section('title')
     الكشوفات
 @stop
@@ -69,12 +69,8 @@
                                             @endif
 
                                         </td>
-                                        <td>
-                                            <a href="{{ route('patient_details', $invoice->id) }}"
-                                                class="your-link-styles">
-                                                {{ $invoice->Patient->name }}
-                                            </a>
-                                        </td>
+                                        <td><a href="{{route('patient_details',$invoice->patient_id)}}">{{ $invoice->Patient->name }}</a></td>
+
                                         <td>{{ number_format($invoice->price, 2) }}</td>
                                         <td>{{ number_format($invoice->discount_value, 2) }}</td>
                                         <td>{{ $invoice->tax_rate }}%</td>
@@ -89,8 +85,6 @@
                                                 <span class="badge badge-success">مكتملة</span>
                                             @endif
                                         </td>
-
-
                                         <td>
                                             <div class="dropdown show">
                                                 <a class="btn btn-primary btn-sm dropdown-toggle" href="#"
@@ -100,7 +94,7 @@
                                                     العمليات
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" data-target="#add_ff{{ $invoice->id }}"
+                                                    <a class="dropdown-item" data-target="#add_diagnosis{{ $invoice->id }}"
                                                         data-toggle="modal" href="#add_ff{{ $invoice->id }}">
                                                         <i class="fas fa-stethoscope" style="color: #0000cc"></i>&nbsp;
                                                         <span class="d-inline-block">اضافة تشخيص </span>
@@ -114,8 +108,9 @@
                                                         data-toggle="modal" href="#">
                                                         <i class="fas fa-radiation" style="color: #0000cc"></i>&nbsp; تحويل
                                                         الى الاشعة
+
                                                     </a>
-                                                    <a class="dropdown-item" href="#">
+                                                    <a class="dropdown-item" data-target="#add_laboratorie{{ $invoice->id }}" data-toggle="modal" href="#">
                                                         <i class="fas fa-microscope" style="color: #007BFF"></i>&nbsp; تحويل
                                                         الى المختبر
                                                     </a>
@@ -128,10 +123,12 @@
                                         </td>
 
                                     </tr>
+
                                     @include('Dashboard.doctor.invoices.add_diagnosis')
-                                    @include('Dashboard.doctor.invoices.delete')
                                     @include('Dashboard.doctor.invoices.add_review')
                                     @include('Dashboard.doctor.invoices.add_ray')
+                                    @include('Dashboard.doctor.invoices.add_laboratorie')
+                                    @include('Dashboard.doctor.invoices.delete')
                                 @endforeach
                             </tbody>
                         </table>

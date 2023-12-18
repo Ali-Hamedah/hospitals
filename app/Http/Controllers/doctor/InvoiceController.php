@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\doctor;
 
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Interfaces\doctor_dashboard\InvoicesRepositoryInterface;
@@ -24,18 +25,12 @@ class InvoiceController extends Controller
     public function completedInvoices()
     {
         return  $this->invoicesRepository->completedInvoices();
-       }
-
-          public function reviewInvoices()
-          {
-              return  $this->invoicesRepository->reviewInvoices();
-             }
-
-    public function create()
-    {
-        //
     }
 
+    public function reviewInvoices()
+    {
+        return  $this->invoicesRepository->reviewInvoices();
+    }
 
     public function store(Request $request)
     {
@@ -44,7 +39,7 @@ class InvoiceController extends Controller
 
     public function show($id)
     {
-        //
+        return  $this->invoicesRepository->show($id);
     }
 
 

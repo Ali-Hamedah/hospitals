@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.doctor.master-doctor')
+@extends('Dashboard.layouts.master')
 @section('title')
     الكشوفات
 @stop
@@ -60,7 +60,6 @@
                                 <div class="panel-body tabs-menu-body main-content-body-right border-top-0 border">
                                     <div class="tab-content">
 
-
                                         {{-- Strat Show Information Patient --}}
 
                                         <div class="tab-pane active" id="tab1">
@@ -68,7 +67,7 @@
                                             <div class="vtimeline">
                                                 @foreach ($patient_records as $patient_record)
                                                     <div
-                                                 class="timeline-wrapper {{ auth()->user()->id == $patient_record->doctor_id ? '' : 'timeline-inverted' }} timeline-wrapper-primary">
+                                                        class="timeline-wrapper {{ auth()->user()->id == $patient_record->doctor_id ? '' : 'timeline-inverted' }} timeline-wrapper-primary">
                                                         <div class="timeline-badge"><i class="las la-check-circle"></i>
                                                         </div>
                                                         <div class="timeline-panel">
@@ -81,7 +80,8 @@
                                                             <div
                                                                 class="timeline-footer d-flex align-items-center flex-wrap">
                                                                 <i class="fas fa-user-md"></i>&nbsp;
-                                                                <span>{{ $patient_record->Doctor->name }}</span>
+                                                                <span
+                                                                    style="color: rgb(61, 61, 212)">{{ $patient_record->Doctor->name }}</span>
                                                                 <span class="mr-auto"><i
                                                                         class="fe fe-calendar text-muted mr-1"></i>{{ $patient_record->date }}</span>
 
@@ -107,8 +107,6 @@
 
                                         {{-- End Show Information Patient --}}
 
-
-
                                         {{-- Start Invices Patient --}}
 
                                         <div class="tab-pane" id="tab2">
@@ -120,6 +118,8 @@
                                                             <th>#</th>
                                                             <th>اسم الخدمه</th>
                                                             <th> اسم الدكتور</th>
+                                                            <th>اسم موظف الاشعة</th>
+                                                            <th> حالة الكشف</th>
                                                             <th> العمليات </th>
 
                                                         </tr>
@@ -130,36 +130,31 @@
                                                                 <td>{{ $loop->iteration }}</td>
                                                                 <td> {{ $patient_ray->description }} </td>
                                                                 <td>{{ $patient_ray->doctor->name }}</td>
+                                                                <td> {{ $patient_ray->employee->name }} </td>
+                                                                <td style="color: {{ $patient_ray->case == 1 ? 'green' : 'red' }}">
+                                                                    {{ $patient_ray->case == 1 ? 'مكتمله' : 'غير مكتمله' }}
+                                                                </td>
 
+                                                                @if($patient_ray->doctor_id == auth()->user()->id)
+                                                                @if($patient_ray->case == 0)
                                                                 <td>
-                                                                    @if ($patient_ray->doctor_id == auth()->user()->id)
-                                                                        <a class="btn btn-primary btn-sm"
-                                                                            data-target="#edit_ray{{ $patient_ray->id }}"
-                                                                            data-toggle="modal"
-                                                                            href="#add_ff{{ $patient_ray->id }}"
-                                                                            title="تعديل">
-                                                                            <i class="fas fa-edit"></i>&nbsp;
-                                                                            <span class="d-inline-block"> </span>
-                                                                        </a>
+                                                                    <a class="modal-effect btn btn-sm btn-primary" data-effect="effect-scale"  data-toggle="modal" href="#edit_ray{{$patient_ray->id}}"><i class="fas fa-edit"></i></a>
+                                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$patient_ray->id}}"><i class="las la-trash"></i></a>
+                                                                </td>
 
-                                                                        <a class="btn btn-danger btn-sm"
-                                                                            data-target="#delete{{ $patient_ray->id }}"
-                                                                            data-toggle="modal"
-                                                                            href="#delete{{ $patient_ray->id }}"
-                                                                            title="حذف">
-                                                                            <i class="fa fa-trash"></i>&nbsp;
-                                                                        </a>
-                                                                    @endif
+                                                                @else
+                                                                <td>
+
+                                                                    <a class="modal-effect btn btn-sm "  href="{{route('invoices.show',$patient_ray->id)}}"><img src="{{ asset('Dashboard/img/rays/' . $patient_ray->image->filename) }}" style="max-width: 100px; max-height: 100px;"></a>
+                                                                </td>
+
+                                                                @endif
+                                                            @endif
                                             </div>
-                                            </td>
-
-
                                             </tr>
-                                            <br>
                                             @include('Dashboard.doctor.invoices.edit_ray')
                                             @include('Dashboard.doctor.invoices.delete_ray')
                                             @endforeach
-
                                             </tbody>
                                             </table>
                                         </div>
@@ -167,13 +162,53 @@
 
                                     {{-- End Invices Patient --}}
 
-
-
                                     {{-- Start Receipt Patient  --}}
 
                                     <div class="tab-pane" id="tab3">
                                         <div class="table-responsive">
+                                            <table class="table table-hover text-md-nowrap text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>اسم الخدمه</th>
+                                                        <th> اسم الدكتور</th>
+                                                        <th> العمليات </th>
 
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($patient_Laboratories as $patient_laboratorie)
+                                                        <tr>
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td> {{ $patient_laboratorie->description }} </td>
+                                                            <td>{{ $patient_laboratorie->doctor->name }}</td>
+
+                                                            <td>
+                                                                @if ($patient_laboratorie->doctor_id == auth()->user()->id)
+                                                                    <a class="btn btn-primary btn-sm"
+                                                                        data-target="#edit_laboratories{{ $patient_laboratorie->id }}"
+                                                                        data-toggle="modal"
+                                                                        href="#edit_laboratories{{ $patient_laboratorie->id }}"
+                                                                        title="تعديل">
+                                                                        <i class="fas fa-edit"></i>&nbsp;
+                                                                        <span class="d-inline-block"> </span>
+                                                                    </a>
+
+                                                                    <a class="btn btn-danger btn-sm"
+                                                                        data-target="#delete{{ $patient_laboratorie->id }}"
+                                                                        data-toggle="modal"
+                                                                        href="#delete{{ $patient_laboratorie->id }}"
+                                                                        title="حذف">
+                                                                        <i class="fa fa-trash"></i>&nbsp;
+                                                                    </a>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        @include('Dashboard.doctor.invoices.edit_laboratories')
+                                                        @include('Dashboard.doctor.invoices.delete_laboratories')
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
 

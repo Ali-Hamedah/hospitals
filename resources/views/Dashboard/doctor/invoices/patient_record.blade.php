@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.doctor.master-doctor')
+@extends('Dashboard.layouts.master')
 
 @section('css')
 @endsection
