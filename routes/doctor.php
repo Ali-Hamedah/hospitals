@@ -40,7 +40,7 @@ Route::group(
 
 
         Route::middleware(['auth:doctor'])->group(function () {
-            Route::view('404','Dashboard.404')->name('404');
+            Route::view('404', 'Dashboard.404')->name('404');
 
             // Route::prefix('doctor')->group(function () {
             //     Route::resource('invoices', InvoiceController::class);
@@ -71,13 +71,13 @@ Route::group(
                 Route::resource('ray', RayController::class);
                 //############################# ray route ##########################################
 
-                 //############################# ray route ##########################################
-                 Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->name('patient_details');
-                 //############################# ray route ##########################################
+                //############################# ray route ##########################################
+                Route::get('patient_details/{id}', [PatientDetailsController::class, 'index'])->name('patient_details');
+                //############################# ray route ##########################################
 
                 //  Route::get('/invoice_get/{id}', [InvoiceController::class, 'invoiceGet'])->name('invoice_get');
 
-                   //############################# laboratories route ##########################################
+                //############################# laboratories route ##########################################
                 Route::resource('laboratories', LaboratorieController::class);
                 //############################# end laboratories route ##########################################
 

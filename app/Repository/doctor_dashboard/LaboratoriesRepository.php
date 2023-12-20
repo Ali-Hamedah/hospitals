@@ -72,4 +72,14 @@ class LaboratoriesRepository implements LaboratoriesRepositoryInterface
 
     }
 
+    public function show($id)
+    {
+        $laboratories = Laboratorie::findorFail($id);
+
+        if ($laboratories->doctor_id  == auth()->user()->id) {
+            return view('Dashboard.doctor.invoices.view_laboratorie', compact('laboratories'));
+        }
+        return redirect()->route('404');
+    }
+
 }

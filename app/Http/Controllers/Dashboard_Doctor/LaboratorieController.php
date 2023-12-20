@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard_Doctor;
 
+use App\Models\Laboratorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Interfaces\doctor_dashboard\LaboratoriesRepositoryInterface;
@@ -44,6 +45,11 @@ class LaboratorieController extends Controller
     public function destroy($id)
     {
         return $this->Laboratorie->store($id);
+    }
+
+    public function show($id)
+    {
+        return $this->Laboratorie->show($id);
     }
 
 }

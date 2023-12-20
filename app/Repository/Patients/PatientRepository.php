@@ -80,6 +80,7 @@ function update($request)
 $patients = Patient::findOrFail($request->id);
 
 $patients->update($request->all());
+$patients->Password = Hash::make($request->Phone);
 
 // insert trans
 $patients->name = $request->name;

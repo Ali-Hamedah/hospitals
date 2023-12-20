@@ -1,6 +1,7 @@
 <?php
 
 return array (
+  'patient_control_panel' => 'لوحة تحكم المرضى  ',
   'name' => ' اسم المريض',
   'email' => ' الايميل ',
   'Date_Birth' => 'تاريخ الميلاد',

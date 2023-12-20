@@ -14,4 +14,5 @@ return array (
   'Last_5_invoices' => ' آخر 5 فواتير',
   'Complete' => 'مكتملة',
   'Under_procedure' => 'تحت الإجراء',
+  'Total_Payments' => ' اجمالي المدفوعات',
 );

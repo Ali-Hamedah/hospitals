@@ -25,6 +25,10 @@ class RouteServiceProvider extends ServiceProvider
 
     public const RAY_EMPLOYEE = '/dashboard/ray_employee';
 
+    public const LABORATORIEEMPLOYEE = '/dashboard/laboratorie_employee';
+
+    public const PATIENT = '/dashboard/patient';
+
     /**
      * The controller namespace for the application.
      *
@@ -64,6 +68,14 @@ class RouteServiceProvider extends ServiceProvider
                 Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/ray_employee.php'));
+
+                Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/laboratorie_employee.php'));
+
+                Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/patient.php'));
         });
     }
 

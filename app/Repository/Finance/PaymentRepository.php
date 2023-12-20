@@ -139,6 +139,7 @@ class PaymentRepository implements PaymentRepositoryInterface
          $remainingAmount = $totalCredit - $totalDebit;
 
          return response()->json(['remainingAmount' => $remainingAmount]);
+
     }
 
 

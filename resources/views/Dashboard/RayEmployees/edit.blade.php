@@ -19,7 +19,7 @@
                     <input type="email" name="email" id="email" value="{{ $RayEmployee->email }}" class="form-control" autocomplete="off"><br>
 
                     <label for="password">{{trans('Doctors.password')}}</label>
-                    <input type="password" class="form-control" name="password" value="{{ $RayEmployee->password }}" id="password" rows="5" >
+                    <input type="password" class="form-control" name="password"  id="password" rows="5" >
                 </div>
 
                 <div class="modal-footer">

@@ -126,6 +126,8 @@ Route::group(
 
         Route::resource('Payment', PaymentAccountController::class);
 
+        Route::get('/getRemainingAmount/{patientId}', [PaymentAccountController::class, 'getRemainingAmount']);
+
         //############################# end Payment route ######################################
 
 

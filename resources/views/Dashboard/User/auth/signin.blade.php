@@ -51,18 +51,19 @@
                                             <select class="form-select" id="sectionChooser"
                                                 aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
-                                                <option value="user">{{ trans('Dashboard/login_trans.user') }}</option>
+                                                <option value="patient">{{ trans('Dashboard/login_trans.patient') }}</option>
                                                 <option value="admin">{{ trans('Dashboard/login_trans.admin') }}</option>
                                                 <option value="doctor">{{ trans('Dashboard/login_trans.doctor') }}</option>
-                                                <option value="ray_employee">{{ trans('Dashboard/login_trans.ray_employee') }}</option>
-
+                                                <option value="ray_employee">
+                                                    {{ trans('Dashboard/login_trans.ray_employee') }}</option>
+                                                <option value="laboratorie_employee">
+                                                    {{ trans('Dashboard/login_trans.laboratorie_employee') }}</option>
                                             </select>
 
-
-                                            {{-- form user --}}
-                                            <div class="panel" id="user">
+                                            {{-- form patient --}}
+                                            <div class="panel" id="patient">
                                                 <h2> {{ trans('Dashboard/login_trans.user') }}</h2>
-                                                <form method="POST" action="{{ route('login.user') }}">
+                                                <form method="POST" action="{{ route('login.patient') }}">
                                                     @csrf
                                                     <div class="form-group">
                                                         <label>Email</label> <input class="form-control"
@@ -89,7 +90,8 @@
                                                 <div class="main-signin-footer mt-5">
                                                     <p><a href="">Forgot password?</a></p>
                                                     <p>Don't have an account? <a
-                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an Account</a>
+                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an
+                                                            Account</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -124,7 +126,8 @@
                                                 <div class="main-signin-footer mt-5">
                                                     <p><a href="">Forgot password?</a></p>
                                                     <p>Don't have an account? <a
-                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an Account</a>
+                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an
+                                                            Account</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -144,7 +147,8 @@
                                                         <label>Password</label> <input class="form-control"
                                                             placeholder="Enter your password" type="password"name="password"
                                                             required autocomplete="current-password">
-                                                    </div><button type="submit" class="btn btn-main-primary btn-block">Sign
+                                                    </div><button type="submit"
+                                                        class="btn btn-main-primary btn-block">Sign
                                                         In</button>
                                                     <div class="row row-xs">
                                                         <div class="col-sm-6">
@@ -162,12 +166,13 @@
                                                 <div class="main-signin-footer mt-5">
                                                     <p><a href="">Forgot password?</a></p>
                                                     <p>Don't have an account? <a
-                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an Account</a>
+                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an
+                                                            Account</a>
                                                     </p>
                                                 </div>
                                             </div>
 
-                                            {{-- form doctor --}}
+                                            {{-- form ray_employee --}}
                                             <div class="panel" id="ray_employee">
                                                 <h2> {{ trans('Dashboard/login_trans.ray_employee') }}</h2>
                                                 <form method="POST" action="{{ route('login.ray_employee') }}">
@@ -200,12 +205,51 @@
                                                 <div class="main-signin-footer mt-5">
                                                     <p><a href="">Forgot password?</a></p>
                                                     <p>Don't have an account? <a
-                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an Account</a>
+                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an
+                                                            Account</a>
                                                     </p>
                                                 </div>
                                             </div>
 
 
+                                            {{-- form laboratorie_employee --}}
+                                            <div class="panel" id="laboratorie_employee">
+                                                <h2> {{ trans('Dashboard/login_trans.laboratorie_employee') }}</h2>
+                                                <form method="POST" action="{{ route('login.laboratorie_employee') }}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label>Email</label> <input class="form-control"
+                                                            placeholder="Enter your email" type="email" name="email"
+                                                            :value="old('email')" required autofocus>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Password</label> <input class="form-control"
+                                                            placeholder="Enter your password"
+                                                            type="password"name="password" required
+                                                            autocomplete="current-password">
+                                                    </div><button type="submit"
+                                                        class="btn btn-main-primary btn-block">Sign In</button>
+                                                    <div class="row row-xs">
+                                                        <div class="col-sm-6">
+                                                            <button class="btn btn-block"><i
+                                                                    class="fab fa-facebook-f"></i> Signup with
+                                                                Facebook</button>
+                                                        </div>
+                                                        <div class="col-sm-6 mg-t-10 mg-sm-t-0">
+                                                            <button class="btn btn-info btn-block"><i
+                                                                    class="fab fa-twitter"></i> Signup with
+                                                                Twitter</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="main-signin-footer mt-5">
+                                                    <p><a href="">Forgot password?</a></p>
+                                                    <p>Don't have an account? <a
+                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an
+                                                            Account</a>
+                                                    </p>
+                                                </div>
+                                            </div>
 
 
 

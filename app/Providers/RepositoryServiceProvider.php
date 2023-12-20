@@ -65,6 +65,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Interfaces\Dashboard_RayEmployee\InvoicesRepositoryInterface::class,\App\Repository\Dashboard_RayEmployee\InvoicesRepository::class
         );
 
+         //Dashboard_Laboratorie_Employee
+         $this->app->bind('App\Interfaces\Dashboard_Laboratorie_Employee\InvoicesRepositoryInterface',
+         'App\Repository\Dashboard_Laboratorie_Employee\InvoicesRepository');
+
+
 
 
     }

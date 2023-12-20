@@ -131,25 +131,35 @@
                                                                 <td> {{ $patient_ray->description }} </td>
                                                                 <td>{{ $patient_ray->doctor->name }}</td>
                                                                 <td> {{ $patient_ray->employee->name }} </td>
-                                                                <td style="color: {{ $patient_ray->case == 1 ? 'green' : 'red' }}">
+                                                                <td
+                                                                    style="color: {{ $patient_ray->case == 1 ? 'green' : 'red' }}">
                                                                     {{ $patient_ray->case == 1 ? 'مكتمله' : 'غير مكتمله' }}
                                                                 </td>
 
-                                                                @if($patient_ray->doctor_id == auth()->user()->id)
-                                                                @if($patient_ray->case == 0)
-                                                                <td>
-                                                                    <a class="modal-effect btn btn-sm btn-primary" data-effect="effect-scale"  data-toggle="modal" href="#edit_ray{{$patient_ray->id}}"><i class="fas fa-edit"></i></a>
-                                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$patient_ray->id}}"><i class="las la-trash"></i></a>
-                                                                </td>
+                                                                @if ($patient_ray->doctor_id == auth()->user()->id)
+                                                                    @if ($patient_ray->case == 0)
+                                                                        <td>
+                                                                            <a class="modal-effect btn btn-sm btn-primary"
+                                                                                data-effect="effect-scale"
+                                                                                data-toggle="modal"
+                                                                                href="#edit_ray{{ $patient_ray->id }}"><i
+                                                                                    class="fas fa-edit"></i></a>
+                                                                            <a class="modal-effect btn btn-sm btn-danger"
+                                                                                data-effect="effect-scale"
+                                                                                data-toggle="modal"
+                                                                                href="#delete{{ $patient_ray->id }}"><i
+                                                                                    class="las la-trash"></i></a>
+                                                                        </td>
+                                                                    @else
+                                                                        <td>
 
-                                                                @else
-                                                                <td>
-
-                                                                    <a class="modal-effect btn btn-sm "  href="{{route('invoices.show',$patient_ray->id)}}"><img src="{{ asset('Dashboard/img/rays/' . $patient_ray->image->filename) }}" style="max-width: 100px; max-height: 100px;"></a>
-                                                                </td>
-
+                                                                            <a class="modal-effect btn btn-sm "
+                                                                                href="{{ route('invoices.show', $patient_ray->id) }}"><img
+                                                                                    src="{{ asset('Dashboard/img/rays/' . $patient_ray->image->filename) }}"
+                                                                                    style="max-width: 100px; max-height: 100px;"></a>
+                                                                        </td>
+                                                                    @endif
                                                                 @endif
-                                                            @endif
                                             </div>
                                             </tr>
                                             @include('Dashboard.doctor.invoices.edit_ray')
@@ -184,24 +194,32 @@
                                                             <td>{{ $patient_laboratorie->doctor->name }}</td>
 
                                                             <td>
-                                                                @if ($patient_laboratorie->doctor_id == auth()->user()->id)
-                                                                    <a class="btn btn-primary btn-sm"
-                                                                        data-target="#edit_laboratories{{ $patient_laboratorie->id }}"
-                                                                        data-toggle="modal"
-                                                                        href="#edit_laboratories{{ $patient_laboratorie->id }}"
-                                                                        title="تعديل">
-                                                                        <i class="fas fa-edit"></i>&nbsp;
-                                                                        <span class="d-inline-block"> </span>
-                                                                    </a>
+                                                                @if ($patient_laboratorie->case == 0)
+                                                                    @if ($patient_laboratorie->doctor_id == auth()->user()->id)
+                                                                        <a class="btn btn-primary btn-sm"
+                                                                            data-target="#edit_laboratories{{ $patient_laboratorie->id }}"
+                                                                            data-toggle="modal"
+                                                                            href="#edit_laboratories{{ $patient_laboratorie->id }}"
+                                                                            title="تعديل">
+                                                                            <i class="fas fa-edit"></i>&nbsp;
+                                                                            <span class="d-inline-block"> </span>
+                                                                        </a>
 
-                                                                    <a class="btn btn-danger btn-sm"
-                                                                        data-target="#delete{{ $patient_laboratorie->id }}"
-                                                                        data-toggle="modal"
-                                                                        href="#delete{{ $patient_laboratorie->id }}"
-                                                                        title="حذف">
-                                                                        <i class="fa fa-trash"></i>&nbsp;
-                                                                    </a>
+                                                                        <a class="btn btn-danger btn-sm"
+                                                                            data-target="#delete{{ $patient_laboratorie->id }}"
+                                                                            data-toggle="modal"
+                                                                            href="#delete{{ $patient_laboratorie->id }}"
+                                                                            title="حذف">
+                                                                            <i class="fa fa-trash"></i>&nbsp;
+                                                                        </a>
+                                                                    @endif
+                                                                @else
+                                                                    <a class="modal-effect btn btn-sm "
+                                                                        href="{{ route('laboratories.show', $patient_laboratorie->id) }}"><img
+                                                                            src="{{ asset('Dashboard/img/laboratories/' . $patient_laboratorie->image->filename) }}"
+                                                                            style="max-width: 100px; max-height: 100px;"></a>
                                                                 @endif
+
                                                             </td>
                                                         </tr>
                                                         @include('Dashboard.doctor.invoices.edit_laboratories')
