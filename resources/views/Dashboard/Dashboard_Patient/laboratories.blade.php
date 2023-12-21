@@ -31,38 +31,29 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>تاريخ الفاتورة</th>
-                                <th>اسم المريض</th>
+                                <th> المطلوب</th>
                                 <th>اسم الدكتور</th>
-                                <th>المطلوب</th>
-                                <th>حالة الفاتورة</th>
-                                <th>العمليات</th>
+                                <th>اسم دكتور المختبر</th>
+                                <th> ملاحظة المختبر</th>
+                                <th>  العمليات</th>
+
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($invoices as $invoice)
+                            @foreach($laboratories as $laboratorie)
                                 <tr>
                                     <td>{{ $loop->iteration}}</td>
-                                    <td>{{ $invoice->created_at }}</td>
-                                    <td>{{ $invoice->Patient->name }}</td>
-                                    <td>{{ $invoice->doctor->name }}</td>
-                                    <td>{{ $invoice->description }}</td>
+                                    <td>{{ $laboratorie->description }}</td>
+                                    <td>{{ $laboratorie->doctor->name }}</td>
+                                    <td>{{ $laboratorie->employee->name }}</td>
+                                    <td>{{ $laboratorie->description_employee }}</td>
                                     <td>
-                                        @if($invoice->case == 0)
-                                            <span class="badge badge-danger">تحت الاجراء</span>
-                                        @else
-                                            <span class="badge badge-success">مكتملة</span>
-                                        @endif
-                                    </td>
+                                        @if($laboratorie->employee_id !== null)
+                                            <a class="btn btn-primary btn-sm" href="{{route('view_laboratories',$laboratorie->id)}}" role="button">عرض التحليل</a>
+                                        @endif                                                   </td>
 
-                                    <td>
-                                        <div class="dropdown">
-                                            <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown" type="button">{{trans('doctors.Processes')}}<i class="fas fa-caret-down mr-1"></i></button>
-                                            <div class="dropdown-menu tx-13">
-                                                <a class="dropdown-item" href="{{route('invoices_ray_employee.edit',$invoice->id)}}"><i class="text-primary fa fa-stethoscope"></i>&nbsp;&nbsp;اضافة تشخيص </a>
-                                            </div>
-                                        </div>
-                                    </td>
+
+
                                 </tr>
                             @endforeach
                             </tbody>

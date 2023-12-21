@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard_Patient\PatientController;
 
 
 
@@ -38,9 +39,26 @@ Route::group(
 
         //---------------------------------------------------------------------------------------------------------------
 
+        Route::middleware(['auth:patient'])->group(function () {
+            Route::view('404','Dashboard.404')->name('404');
+
+            Route::get('invoices_patient', [PatientController::class, 'invoices'])->name('invoices.patient');
+
+            Route::get('laboratories_patient', [PatientController::class, 'laboratories'])->name('laboratories.patient');
+
+            Route::get('view_laboratories/{id}', [PatientController::class, 'viewLaboratories'])->name('view_laboratories');
+
+            Route::get('rays_patient', [PatientController::class, 'raysPatient'])->name('rays.patient');
+
+            Route::get('view_rays/{id}', [PatientController::class, 'viewRays'])->name('view_rays');
+
+            Route::get('Payments_patient', [PatientController::class, 'Payments'])->name('Payments.patient');
 
 
-    // //############################# end invoices route ######################################
+    });
+
+
+
 
 
 

@@ -21,6 +21,11 @@ return $this->belongsTo(Doctor::class, 'doctor_id');
 return $this->belongsTo(Patient::class, 'patient_id');
     }
 
+    public function employee()
+    {
+return $this->belongsTo(LaboratorieEmployee::class, 'employee_id')->withDefault('no date');
+    }
+
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');

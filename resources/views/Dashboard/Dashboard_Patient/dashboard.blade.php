@@ -31,7 +31,8 @@
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ DB::table('invoices')->where('patient_id',auth()->user()->id)->count() }}</h4>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">
+                                    {{ DB::table('invoices')->where('patient_id', auth()->user()->id)->count() }}</h4>
 
                             </div>
 
@@ -51,7 +52,9 @@
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white"><a style="color: white" href="{{route('payments.patient')}}">{{App\Models\PatientAccount::where('patient_id',auth()->user()->id)->sum('credit')}}</a> </h4>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white"><a style="color: white"
+                                        href="{{ route('Payments.patient') }}">{{ App\Models\PatientAccount::where('patient_id', auth()->user()->id)->sum('credit') }}</a>
+                                </h4>
 
                             </div>
 
@@ -79,27 +82,22 @@
                 <div class="table-responsive country-table">
                     <table class="table table-striped table-bordered mb-0 text-sm-nowrap text-lg-nowrap text-xl-nowrap">
                         <thead>
-
                             <tr>
                                 <th>#</th>
                                 <th>تاريخ الفاتورة</th>
                                 <th>اسم المريض</th>
                                 <th>اسم الدكتور</th>
-                                <th>المطلوب</th>
                                 <th>حالة الفاتورة</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (App\Models\Ray::Latest()->take(5)->where('case', 0)->get() as $invoice)
+                            @forelse(\App\Models\Invoice::latest()->take(5)->where('patient_id',auth()->user()->id)->get() as $invoice)
                                 <tr>
-
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $invoice->created_at }}</td>
-                                    <td style="color: red">{{ $invoice->patient->name }}</td>
-                                    <td>{{ $invoice->doctor->name }}</td>
-                                    <td style="color: red">{{ $invoice->description }}</td>
-
-                                    <td>
+                                    <td class="tx-right tx-medium tx-inverse">{{ $invoice->created_at }}</td>
+                                    <td class="tx-right tx-medium tx-danger">{{ $invoice->patient->name }}</td>
+                                    <td class="tx-right tx-medium tx-inverse">{{ $invoice->doctor->name }}</td>
+                                    <td class="tx-right tx-medium tx-inverse">
                                         @if ($invoice->case == 0)
                                             <span class="badge badge-danger">تحت الاجراء</span>
                                         @else
@@ -107,9 +105,9 @@
                                         @endif
                                     </td>
                                 </tr>
-                            @endforeach
-
-
+                            @empty
+                                لاتوجد بيانات
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

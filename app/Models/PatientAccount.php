@@ -10,19 +10,27 @@ class PatientAccount extends Model
     use HasFactory;
     public function invoice()
     {
-        return $this->belongsTo(Invoice::class,'invoice_id');
+        return $this->belongsTo(Invoice::class, 'invoice_id');
     }
 
     public function ReceiptAccount()
     {
-        return $this->belongsTo(ReceiptAccount::class,'receipt_id');
+        return $this->belongsTo(ReceiptAccount::class, 'receipt_id');
     }
 
 
     public function PaymentAccount()
     {
-        return $this->belongsTo(PaymentAccount::class,'Payment_id');
+        return $this->belongsTo(PaymentAccount::class, 'Payment_id');
     }
 
-  
+    public function doctor()
+    {
+        return $this->belongsTo(Patient::class, 'doctor_id')->withDefault('no date');
+    }
+
+    public function Patient()
+    {
+        return $this->belongsTo(Patient::class, 'patient_id');
+    }
 }
