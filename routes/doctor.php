@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Livewire\Chat\Main;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Chat\Createchat;
 use App\Http\Controllers\doctor\InvoiceController;
 use App\Http\Controllers\Dashboard_Doctor\RayController;
 use App\Http\Controllers\Dashboard_Doctor\DiagnosticController;
@@ -80,6 +82,14 @@ Route::group(
                 //############################# laboratories route ##########################################
                 Route::resource('laboratories', LaboratorieController::class);
                 //############################# end laboratories route ##########################################
+
+                Route::get('show_notification/{id}', [PatientDetailsController::class, 'showNotification'])->name('show_notification');
+
+
+            //############################# Chat route ##########################################
+            Route::get('list/patients',Createchat::class)->name('list.patients');
+            Route::get('chat/patients',Main::class)->name('chat.patients');
+            //############################# end Chat route ######################################
 
             });
         });

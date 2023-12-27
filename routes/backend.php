@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Events\MyEvent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\PatientController;

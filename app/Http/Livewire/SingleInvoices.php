@@ -3,12 +3,18 @@
 namespace App\Http\Livewire;
 
 use App\Models\Doctor;
+use App\Events\MyEvent;
 use App\Models\Invoice;
 use App\Models\Patient;
 use App\Models\Service;
 use Livewire\Component;
 use App\Models\FundAccount;
+
+use App\Models\Notification;
+
+use App\Events\CreateInvoice;
 use App\Models\PatientAccount;
+
 use App\Models\single_invoice;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +24,9 @@ use Illuminate\Support\Facades\Redirect;
 class SingleInvoices extends Component
 {
     public $InvoiceSaved, $InvoiceUpdated;
+
+    public $patient;
+    public $username;
     public $deletedSuccessfully = false;
     public $show_table = true;
     public $tax_rate = 17;
@@ -25,6 +34,11 @@ class SingleInvoices extends Component
     public $printInvoice = false;
     public $price, $discount_value = 0, $patient_id, $doctor_id, $section_id, $type, $Service_id, $single_invoice_id, $catchError;
 
+    public function mount()
+    {
+
+        $this->username = auth()->user()->name;
+     }
     public function render()
     {
         return view('livewire.single_invoices.single-invoices', [
@@ -141,6 +155,31 @@ class SingleInvoices extends Component
                     $fund_accounts->save();
                     $this->InvoiceSaved = true;
                     $this->show_table = true;
+
+                    $notification = new Notification();
+                    $notification->reader_status = false;
+                    $notification->user_id = $this->doctor_id;
+                    $patient = Patient::find($this->patient_id);
+                    $notification->message = "كشف جديد :".$patient->name;
+                    $notification->save();
+
+                    //هذا الاشعارات مفرد خاص
+                    $data=[
+                        'patient'=>$this->patient_id,
+                        'invoice_id'=>$single_invoices->id,
+                        'doctor_id'=>$this->doctor_id,
+                    ];
+
+                    event(new CreateInvoice($data));
+//--------------------------------------------------------------------------//
+                    //هذا الاشعارات للجميع
+                    // $data=[
+                    //     'patient'=>$this->patient_id,
+                    //     'invoice_id'=>$single_invoices->id,
+                    // ];
+
+                    // event(new MyEvent($data));
+
                 }
                 DB::commit();
             } catch (\Exception $e) {
@@ -219,6 +258,24 @@ class SingleInvoices extends Component
                     $patient_accounts->save();
                     $this->InvoiceSaved = true;
                     $this->show_table = true;
+
+                    $notification = new Notification();
+                    $notification->reader_status = false;
+                    $notification->user_id = $this->doctor_id;
+                    $patient = Patient::find($this->patient_id);
+                    $notification->message = "كشف جديد :".$patient->name;
+                    $notification->save();
+
+                    //هذا الاشعارات مفرد خاص
+                    $data=[
+                        'patient'=>$this->patient_id,
+                        'invoice_id'=>$single_invoices->id,
+                        'doctor_id'=>$this->doctor_id,
+                    ];
+
+                    event(new CreateInvoice($data));
+
+
                 }
 
                 DB::commit();

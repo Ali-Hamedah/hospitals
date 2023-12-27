@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Livewire\Chat\Main;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Chat\Createchat;
 use App\Http\Controllers\Dashboard_Patient\PatientController;
 
 
@@ -54,6 +56,10 @@ Route::group(
 
             Route::get('Payments_patient', [PatientController::class, 'Payments'])->name('Payments.patient');
 
+             //############################# Chat route ##########################################
+         Route::get('list/doctors',Createchat::class)->name('list.doctors');
+         Route::get('chat/doctors',Main::class)->name('chat.doctors');
+         //############################# end Chat route ######################################
 
     });
 

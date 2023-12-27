@@ -2,9 +2,10 @@
 
 namespace App\Repository\Sections;
 
-use App\Interfaces\Sections\SectionRepositoryInterface;
 use App\Models\Doctor;
+
 use App\Models\Section;
+use App\Interfaces\Sections\SectionRepositoryInterface;
 
 class SectionRepository implements SectionRepositoryInterface
 {
