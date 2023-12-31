@@ -32,7 +32,6 @@ class Chatbox extends Component
             $this->auth_email = Auth::guard('doctor')->user()->email;
             $this->auth_id = Auth::guard('doctor')->user()->id;
         }
-
     }
 
     public function getListeners()
@@ -41,8 +40,7 @@ class Chatbox extends Component
             $auth_id = Auth::guard('patient')->user()->id;
             $this->event_name = "MassageSent2";
             $this->chat_page = "chat2";
-
-        } else {
+        } elseif (Auth::guard('doctor')->check()) {
             $auth_id = Auth::guard('doctor')->user()->id;
             $this->event_name = "MassageSent";
             $this->chat_page = "chat";
@@ -56,14 +54,27 @@ class Chatbox extends Component
     public function broadcastMassage($event)
     {
         $broadcastMessage = Message::find($event['message']);
-        $broadcastMessage->read = 1;
-        $this->pushMessage($broadcastMessage->id);
+        $broadcastMessage->read1 = 1;
+        $broadcastMessage->read2 = 1;
+        //
+        if ($broadcastMessage->conversation_id == $this->selected_conversation->id) {
+            $this->pushMessage($broadcastMessage->id);
+        }
     }
 
     public function pushMessage($messageId)
     {
         $newMessage = Message::find($messageId);
         $this->messages->push($newMessage);
+        $this->dispatchBrowserEvent('rowChatToBottom');
+
+        //هذا اذا كان في المجادثه موجود مباشرة يتم تغيير حالة الرسالة الئ مقروة
+        if ($this->auth_email == Auth::guard('patient')->check()) {
+            Message::where('conversation_id', $this->selected_conversation->id)
+                ->update(['read1' => 1]);
+        } else
+            Message::where('conversation_id', $this->selected_conversation->id)
+                ->update(['read2' => 1]);
     }
 
 
@@ -72,6 +83,8 @@ class Chatbox extends Component
         $this->selected_conversation = $conversation;
         $this->receviverUser = $receiver;
         $this->messages = Message::where('conversation_id', $this->selected_conversation->id)->get();
+        //يخلي السكرول في الاسفل عند فتح الصفحه
+        $this->dispatchBrowserEvent('chatSelected');
     }
 
     public function load_conversationPatient(Conversation $conversation, Patient $receiver)
@@ -80,6 +93,8 @@ class Chatbox extends Component
         $this->selected_conversation = $conversation;
         $this->receviverUser = $receiver;
         $this->messages = Message::where('conversation_id', $this->selected_conversation->id)->get();
+        //يخلي السكرول في الاسفل عند فتح الصفحه
+        $this->dispatchBrowserEvent('chatSelected');
     }
 
 

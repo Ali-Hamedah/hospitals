@@ -19,6 +19,11 @@ class Section extends Model
     {
         return $this->hasMany(Doctor::class);
     }
-    
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
 }
 

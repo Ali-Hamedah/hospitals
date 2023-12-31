@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use Livewire\Component;
 use App\Models\Conversation;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 
 class Chatlist extends Component
@@ -23,33 +24,40 @@ class Chatlist extends Component
         $this->auth_email = auth()->user()->email;
     }
 
-    public function getUsers(Conversation $conversation ,$request){
+    public function getUsers(Conversation $conversation, $request)
+    {
+        $receiverEmail = ($conversation->sender_email == $this->auth_email)
+            ? $conversation->receiver_email
+            : $conversation->sender_email;
 
+        $this->receviverUser = Doctor::firstWhere('email', $receiverEmail) ?? Patient::firstWhere('email', $receiverEmail);
 
-        if($conversation->sender_email == $this->auth_email){
-            $this->receviverUser = Doctor::firstwhere('email',$conversation->receiver_email);
+        if (isset($request)) {
+            return optional($this->receviverUser)->$request;
         }
+    }
 
-        else{
-            $this->receviverUser = Patient::firstwhere('email',$conversation->sender_email);
-        }
 
-        if(isset($request)){
-            return $this->receviverUser->$request;
-        }
-
-     }
 
      public function chatUserSelected(Conversation $conversation ,$receiver_id){
 
         $this->selected_conversation = $conversation;
         $this->receviverUser = Doctor::find($receiver_id);
+
+
         if (Auth::guard('patient')->check()) {
             $this->emitTo('chat.chatbox', 'load_conversationDoctor', $this->selected_conversation, $this->receviverUser);
             $this->emitTo('chat.send-message', 'updateMessage', $this->selected_conversation, $this->receviverUser);
+             //تحديث حالة لرساله مقروة
+        Message::where('conversation_id', $this->selected_conversation->id)
+        ->update(['read1' => 1]);
+
         } else {
             $this->emitTo('chat.chatbox', 'load_conversationPatient', $this->selected_conversation, $this->receviverUser);
             $this->emitTo('chat.send-message', 'updateMessage2', $this->selected_conversation, $this->receviverUser);
+                 //تحديث حالة لرساله مقروة
+        Message::where('conversation_id', $this->selected_conversation->id)
+        ->update(['read2' => 1]);
         }
      }
 
@@ -57,7 +65,7 @@ class Chatlist extends Component
     {
         $this->conversations = Conversation::where('sender_email',$this->auth_email)->orwhere('receiver_email',$this->auth_email)
         //هذا يرتب حسب الاحدث
-            ->orderBy('created_at','DESC')
+            ->orderBy('last_time_message','DESC')
             ->get();
         return view('livewire.chat.chatlist');
     }

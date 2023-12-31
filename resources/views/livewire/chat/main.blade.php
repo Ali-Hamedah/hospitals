@@ -42,4 +42,12 @@
     <script src="{{URL::asset('Dashboard/plugins/lightslider/js/lightslider.min.js')}}"></script>
     <!--Internal  Chat js -->
     <script src="{{URL::asset('Dashboard/js/chat.js')}}"></script>
+
+    يخلي السكرول في الاسفل عند فتح الصفحه
+    <script>
+        window.addEventListener('chatSelected', event=>{
+         $('.main-chat-body').scrollTop($('.main-chat-body')[0].scrollHeight);
+        });
+     </script>
+
 @endsection

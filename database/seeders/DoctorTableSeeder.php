@@ -18,17 +18,17 @@ class DoctorTableSeeder extends Seeder
     {
         DB::table('doctors')->delete();
         $doctors =  Doctor::factory()->count(30)->create();
-        $Appointments = Appointment::all();
+       // $Appointments = Appointment::all();
 
 //        foreach ($doctors as $doctor){
 //            $Appointments = Appointment::all()->random()->id;
 //            $doctor->doctorappointments()->attach($Appointments);
 //        }
-        Doctor::all()->each(function ($doctor) use ($Appointments) {
-           $doctor->doctorappointments()->attach(
-              $Appointments->random(rand(1,7))->pluck('id')->toArray()
-           );
-       });
+    //     Doctor::all()->each(function ($doctor) use ($Appointments) {
+    //        $doctor->doctorappointments()->attach(
+    //           $Appointments->random(rand(1,7))->pluck('id')->toArray()
+    //        );
+    //    });
 
 
 }

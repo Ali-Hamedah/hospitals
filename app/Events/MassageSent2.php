@@ -23,14 +23,15 @@ class MassageSent2 implements ShouldBroadcast
     public $receiver;
     public $conversation;
 
-    public function __construct(Doctor $sender, Message $massage, Conversation $conversation, Patient $receiver )
+
+
+    public function __construct(Doctor $sender, Message $massage, Conversation $conversation, Patient $receiver)
     {
         $this->sender = $sender;
         $this->massage = $massage;
         $this->conversation = $conversation;
         $this->receiver = $receiver;
     }
-
     public function broadcastWith()
     {
         return [
@@ -43,6 +44,6 @@ class MassageSent2 implements ShouldBroadcast
 
     public function broadcastOn()
     {
-        return new PrivateChannel('chat2.'.$this->sender->id);
+        return new PrivateChannel('chat2.'.$this->receiver->id);
     }
 }

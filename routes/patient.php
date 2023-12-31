@@ -61,6 +61,7 @@ Route::group(
          Route::get('chat/doctors',Main::class)->name('chat.doctors');
          //############################# end Chat route ######################################
 
+
     });
 
 

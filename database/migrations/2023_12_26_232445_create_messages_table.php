@@ -18,7 +18,8 @@ class CreateMessagesTable extends Migration
             $table->foreignId('conversation_id')->constrained();
             $table->string('sender_email');
             $table->string('receiver_email');
-            $table->boolean('read')->default(0)->nullable();
+            $table->boolean('read1')->default(0)->nullable();
+            $table->boolean('read2')->default(0)->nullable();
             $table->text('body')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();

@@ -5,12 +5,14 @@
             <div class="responsive-logo">
                 <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('Dashboard/img/brand/logo.png') }}"
                         class="logo-1" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('Dashboard/img/brand/logo-white.png') }}"
-                        class="dark-logo-1" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('Dashboard/img/brand/favicon.png') }}"
-                        class="logo-2" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('Dashboard/img/brand/favicon.png') }}"
-                        class="dark-logo-2" alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('Dashboard/img/brand/logo-white.png') }}" class="dark-logo-1"
+                        alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('Dashboard/img/brand/favicon.png') }}" class="logo-2" alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('Dashboard/img/brand/favicon.png') }}" class="dark-logo-2"
+                        alt="logo"></a>
             </div>
             <div class="app-sidebar__toggle" data-toggle="sidebar">
                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
@@ -97,75 +99,51 @@
                                 <span class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All
                                     Read</span>
                             </div>
-                            <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">You have 4 unread
-                                messages</p>
+                            @if (Auth::guard('doctor')->check())
+                                <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">
+                                    {{ App\Models\Message::ChekDoctor()->count() > 0 }}
+                                </p>
+                            @else
+                                <p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">
+                                    {{ App\Models\Message::ChekPatient()->count() > 0 }}
+                                </p>
+                            @endif
                         </div>
                         <div class="main-message-list chat-scroll">
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="  drop-img  cover-image  "
-                                    data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Petey Cruiser</h5>
-                                    </div>
-                                    <p class="mb-0 desc">I'm sorry but i'm not sure how to help you with that......</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
-                                </div>
-                            </a>
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="drop-img cover-image"
-                                    data-image-src="{{ URL::asset('Dashboard/img/faces/2.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Jimmy Changa</h5>
-                                    </div>
-                                    <p class="mb-0 desc">All set ! Now, time to get to you now......</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 06 01:12 AM</p>
-                                </div>
-                            </a>
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="drop-img cover-image"
-                                    data-image-src="{{ URL::asset('Dashboard/img/faces/9.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Graham Cracker</h5>
-                                    </div>
-                                    <p class="mb-0 desc">Are you ready to pickup your Delivery...</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Feb 25 10:35 AM</p>
-                                </div>
-                            </a>
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="drop-img cover-image"
-                                    data-image-src="{{ URL::asset('Dashboard/img/faces/12.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Donatella Nobatti</h5>
-                                    </div>
-                                    <p class="mb-0 desc">Here are some products ...</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Feb 12 05:12 PM</p>
-                                </div>
-                            </a>
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="drop-img cover-image"
-                                    data-image-src="{{ URL::asset('Dashboard/img/faces/5.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Anne Fibbiyon</h5>
-                                    </div>
-                                    <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Jan 29 03:16 PM</p>
-                                </div>
-                            </a>
+                            @if (Auth::guard('patient')->check())
+                                @if (App\Models\Message::ChekPatient()->count() > 0)
+                                    <a href="{{ route('chat.doctors') }}" class="p-3 d-flex border-bottom">
+                                        <div class="  drop-img  cover-image  "
+                                            data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
+                                            <span class="avatar-status bg-teal"></span>
+                                        </div>
+                                        <div class="wd-90p">
+                                            <div class="d-flex">
+                                                <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
+                                            </div>
+                                            <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
+                                            <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endif
+                            @if (Auth::guard('doctor')->check())
+                                @if (App\Models\Message::ChekDoctor()->count() > 0)
+                                    <a href="{{ route('chat.patients') }}" class="p-3 d-flex border-bottom">
+                                        <div class="  drop-img  cover-image  "
+                                            data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
+                                            <span class="avatar-status bg-teal"></span>
+                                        </div>
+                                        <div class="wd-90p">
+                                            <div class="d-flex">
+                                                <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
+                                            </div>
+                                            <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
+                                            <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endif
                         </div>
                         <div class="text-center dropdown-footer">
                             <a href="text-center">VIEW ALL</a>
@@ -174,55 +152,60 @@
                 </div>
                 <div class="dropdown nav-item main-header-notification">
                     <a class="new nav-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-bell">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-bell">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
                         @if (App\Models\Notification::CauntNotification()->count() > 0)
-                        <span class=" pulse"></span></a>
-                        @endif
+                            <span class=" pulse"></span>
+                    </a>
+                    @endif
 
                     <div class="dropdown-menu dropdown-notifications">
                         <div class="menu-header-content bg-primary text-right">
                             <div class="d-flex">
-                                <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Notifications</h6>
-                                <span
-                                    class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All Read</span>
+                                <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Notifications
+                                </h6>
+                                <span class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All
+                                    Read</span>
                             </div>
-                            <p data-count="0" class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 notif-count">{{ App\Models\Notification::CauntNotification()->count() }}</p>
+                            <p data-count="0"
+                                class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 notif-count">
+                                {{ App\Models\Notification::CauntNotification()->count() }}</p>
                         </div>
                         <div class="main-notification-list Notification-scroll">
 
                             <div class="new_message">
-                            <a class="d-flex p-3 border-bottom" href="#">
-                                <div class="notifyimg bg-pink">
-                                    <i class="la la-file-alt text-white"></i>
-                                </div>
-                                <div class="mr-3">
-                                    <h4 class="notification-label mb-1"></h4>
-                                    <div class="notification-subtext"></div>
-                                </div>
-                                <div class="mr-auto">
-                                    <i class="las la-angle-left text-left text-muted"></i>
-                                </div>
-                            </a>
+                                <a class="d-flex p-3 border-bottom" href="#">
+                                    <div class="notifyimg bg-pink">
+                                        <i class="la la-file-alt text-white"></i>
+                                    </div>
+                                    <div class="mr-3">
+                                        <h4 class="notification-label mb-1"></h4>
+                                        <div class="notification-subtext"></div>
+                                    </div>
+                                    <div class="mr-auto">
+                                        <i class="las la-angle-left text-left text-muted"></i>
+                                    </div>
+                                </a>
                             </div>
 
-                            @foreach(App\Models\Notification::where('user_id',auth()->user()->id)->where('reader_status',0)->get() as $notification )
-                            <a class="d-flex p-3 border-bottom" href="{{ route('show_notification', $notification->id) }}">
-                                <div class="notifyimg bg-pink">
-                                    <i class="la la-file-alt text-white"></i>
-                                </div>
-                                <div class="mr-3">
-                                    <h5 class="notification-label mb-1">{{$notification->message}}</h5>
-                                    <div class="notification-subtext">{{$notification->created_at}}</div>
-                                </div>
-                                <div class="mr-auto">
-                                    <i class="las la-angle-left text-left text-muted"></i>
-                                </div>
-                            </a>
+                            @foreach (App\Models\Notification::where('user_id', auth()->user()->id)->where('reader_status', 0)->get() as $notification)
+                                <a class="d-flex p-3 border-bottom"
+                                    href="{{ route('show_notification', $notification->id) }}">
+                                    <div class="notifyimg bg-pink">
+                                        <i class="la la-file-alt text-white"></i>
+                                    </div>
+                                    <div class="mr-3">
+                                        <h5 class="notification-label mb-1">{{ $notification->message }}</h5>
+                                        <div class="notification-subtext">{{ $notification->created_at }}</div>
+                                    </div>
+                                    <div class="mr-auto">
+                                        <i class="las la-angle-left text-left text-muted"></i>
+                                    </div>
+                                </a>
                             @endforeach
                         </div>
                         <div class="dropdown-footer">
@@ -233,11 +216,12 @@
 
                 <div class="nav-item full-screen fullscreen-button">
                     <a class="new nav-link full-screen-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-maximize">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-maximize">
                             <path
-                                d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                                d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                            </path>
                         </svg>
                     </a>
                 </div>
@@ -298,14 +282,14 @@
                             <form method="POST" action="{{ route('logout.user') }}">
                             @elseif(auth('admin')->check())
                                 <form method="POST" action="{{ route('logout.admin') }}">
-                                    @elseif(auth('patient')->check())
+                                @elseif(auth('patient')->check())
                                     <form method="POST" action="{{ route('logout.patient') }}">
-                                @elseif(auth('ray_employee')->check())
-                                    <form method="POST" action="{{ route('logout.ray_employee') }}">
+                                    @elseif(auth('ray_employee')->check())
+                                        <form method="POST" action="{{ route('logout.ray_employee') }}">
                                         @elseif(auth('laboratorie_employee')->check())
-                                        <form method="POST" action="{{ route('logout.laboratorie_employee') }}">
-                                    @else
-                                        <form method="POST" action="{{ route('logout.doctor') }}">
+                                            <form method="POST" action="{{ route('logout.laboratorie_employee') }}">
+                                            @else
+                                                <form method="POST" action="{{ route('logout.doctor') }}">
                         @endif
                         @csrf
                         <a class="dropdown-item" href="#"
@@ -333,15 +317,16 @@
 </div>
 <!-- /main-header -->
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
 {{-- هذا الاشعارات مفرد خاص --}}
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script>
-    var notificationsWrapper   = $('.dropdown-notifications');
+    var notificationsWrapper = $('.dropdown-notifications');
     var notificationsCountElem = notificationsWrapper.find('p[data-count]');
-    var notificationsCount  = parseInt(notificationsCountElem.data('count'));
+    var notificationsCount = parseInt(notificationsCountElem.data('count'));
 
     var notifications = notificationsWrapper.find('h4.notification-label');
     var new_message = notificationsWrapper.find('.new_message');
@@ -349,8 +334,8 @@
 
     Echo.private('create-invoice.{{ auth()->user()->id }}').listen('.create-invoice', (data) => {
         var newNotificationHtml = `
-       <h4 class="notification-label mb-1">`+data.message+data.patient+`</h4>
-       <div class="notification-subtext">`+data.created_at+`</div>`;
+       <h4 class="notification-label mb-1">` + data.message + data.patient + `</h4>
+       <div class="notification-subtext">` + data.created_at + `</div>`;
         new_message.show();
         notifications.html(newNotificationHtml);
         notificationsCount += 1;
@@ -358,10 +343,8 @@
         notificationsWrapper.find('.notif-count').text(notificationsCount);
         notificationsWrapper.show();
     });
-
-
 </script>
-{{-- 
+{{--
 <script>
     function autoRefresh() {
         location.reload(true); // قم بإعادة تحميل الصفحة
@@ -401,4 +384,3 @@
 
 
 </script> --}}
-

@@ -15,6 +15,12 @@ class Createchat extends Component
     public $users;
     public $auth_email;
 
+    public $receviverUser;
+
+    public $selected_conversation;
+
+    protected $listeners = ['chatUserSelected','refresh'=>'$refresh'];
+
     public function mount()
     {
         $this->auth_email = auth()->user()->email;
@@ -23,15 +29,15 @@ class Createchat extends Component
     public function createConversation($receiver_email)
     {
 
-        $chek_Conversation = Conversation::chekConversation($this->auth_email, $receiver_email)->get();
-        if ($chek_Conversation->isEmpty()) {
+        $chek_Conversation = Conversation::chekConversation($this->auth_email, $receiver_email)->first();
+        if (!$chek_Conversation) {
             DB::beginTransaction();
             try {
                 // $createConversation
                 $createConversation = Conversation::create([
                     'sender_email' => $this->auth_email,
                     'receiver_email' => $receiver_email,
-                    'last_time_message' => null,
+                    'last_time_message' => now(),
                 ]);
                 // create message
                 Message::create([
@@ -40,16 +46,27 @@ class Createchat extends Component
                     'receiver_email' => $receiver_email,
                     'body' => 'السلام عليكم',
                 ]);
+                $this->selected_conversation = $createConversation->id;
+                $this->receviverUser = Doctor::find($receiver_email);
+
+                if (Auth::guard('doctor')->check()) {
+                    $this->redirect(route('chat.patients'));
+                } else {
+                    $this->redirect(route('chat.doctors'));
+                }
                 DB::commit();
                 $this->emitSelf('render');
-            } catch (\ Exception $e) {
+            } catch (\Exception $e) {
                 DB::rollBack();
             }
         } else {
 
-            dd('Conversation yes');
+            if (Auth::guard('doctor')->check()) {
+                $this->redirect(route('chat.patients'));
+            } else {
+                $this->redirect(route('chat.doctors'));
+            }
         }
-
     }
 
     public function render()
