@@ -8,13 +8,14 @@ use App\Models\Invoice;
 use App\Models\Patient;
 use App\Models\Service;
 use Livewire\Component;
+use App\Models\Appointment;
+
 use App\Models\FundAccount;
 
 use App\Models\Notification;
-
 use App\Events\CreateInvoice;
-use App\Models\PatientAccount;
 
+use App\Models\PatientAccount;
 use App\Models\single_invoice;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -155,6 +156,17 @@ class SingleInvoices extends Component
                     $fund_accounts->save();
                     $this->InvoiceSaved = true;
                     $this->show_table = true;
+
+                      // chek appointment
+                      $patient = Patient::find($this->patient_id);
+                      $appointment_info = Appointment::where('doctor_id', $this->doctor_id)->where('email', $patient->email)->where('type','مؤكد')->first();
+                      if ($appointment_info) {
+                          $appointment = Appointment::find($appointment_info->id);
+                          $appointment->update([
+                              'type' => 'منتهي'
+                          ]);
+                      }
+
 
                     $notification = new Notification();
                     $notification->reader_status = false;

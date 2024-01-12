@@ -19,13 +19,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             AdminTableSeeder::class,
-            //AppointmentSeeder::class,
+           // AppointmentSeeder::class,
             SectionTableSeeder::class,
             DoctorTableSeeder::class,
             ImageTableSeeder::class,
             PatientTableSeeder::class,
             ServiceTableSeeder::class,
             ray_employeeTableSeeder::class,
+            //BusinessHourSeeder::class
 
         ]);
     }

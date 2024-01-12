@@ -135,13 +135,12 @@
                             <a href="#" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
                         </div>
                         <div class="contact-info">
-                            <h2>Contact Info</h2>
+                            <h2>{{ __('Website/website.contact_us') }}</h2>
                             <ul class="list-style-two">
-                                <li><span class="icon flaticon-map"></span>Chicago 12, Melborne City, USA</li>
-                                <li><span class="icon flaticon-telephone"></span>(111) 111-111-1111</li>
-                                <li><span class="icon flaticon-message-1"></span>meditech@gmail.com</li>
-                                <li><span class="icon flaticon-timetable"></span>Week Days: 09.00 to 18.00 Sunday:
-                                    Closed
+                                <li><span class="icon flaticon-map"></span>vienna City, austria</li>
+                                <li><span class="icon flaticon-telephone"></span>+4368181863821</li>
+                                <li><span class="icon flaticon-message-1"></span>aliali735522@gmail.com</li>
+                                <li><span class="icon flaticon-timetable"></span>{{ __('Website/website.Monday_to_Friday') }}: {{ __('Website/website.From_8:30am_to_18:00pm') }}
                                 </li>
                             </ul>
                         </div>

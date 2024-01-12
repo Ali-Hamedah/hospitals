@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    خطا</h5>
+                    {{ __('Doctors.Error') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,7 +13,7 @@
             <form action="#" method="#">
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <h5>يرجى تحديد عناصر لحذفها</h5>
+                    <h5> {{ __('Doctors.Please_select_items_delete') }}</h5>
                 </div>
             </form>
         </div>

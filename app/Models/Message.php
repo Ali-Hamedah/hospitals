@@ -18,9 +18,15 @@ class Message extends Model
 
     }
 
+    public function scopeChekAdmin($query){
+
+        return $query->where(['read1' => 0, 'receiver_email' => Auth::guard('admin')->user()->email]);
+
+    }
+
     public function scopeChekPatient($query){
 
-        return $query->where(['read1' => 0, 'receiver_email' => Auth::guard('patient')->user()->email]);
+        return $query->where(['read1' => 0]);
 
     }
 }

@@ -2,24 +2,24 @@
     <div class="alert alert-info">{{ Session::get('success') }}</div>
 @endif
 
-<button class="btn btn-primary pull-right" wire:click="show_form_add" type="button">اضافة فاتورة جديدة </button><br><br>
+<button class="btn btn-primary pull-right" wire:click="show_form_add" type="button"> {{ __('invoices.Add_invoice ') }} </button><br><br>
 <div class="table-responsive">
     <table class="table text-md-nowrap" id="example1" data-page-length="50"style="text-align: center">
         <thead>
         <tr>
             <th>#</th>
-            <th>اسم الخدمة</th>
-            <th>اسم المريض</th>
-            <th>تاريخ الفاتورة</th>
-            <th>اسم الدكتور</th>
-            <th>القسم</th>
-            <th>سعر الخدمة</th>
-            <th>قيمة الخصم</th>
-            <th>نسبة الضريبة</th>
-            <th>قيمة الضريبة</th>
-            <th>الاجمالي مع الضريبة</th>
-            <th>نوع الفاتورة</th>
-            <th>العمليات</th>
+            <th> {{ __('Services.name') }}</th>
+            <th> {{ __('patients.name') }}</th>
+            <th> {{ __('invoices.Invoice_Date') }}</th>
+            <th> {{ __('Doctors.name') }}</th>
+            <th>{{ __('sections.name_sections') }}</th>
+            <th> {{ __('Services.price') }}</th>
+            <th> {{ __('invoices.Discount') }}</th>
+            <th> {{ __('invoices.Tax_Rate') }}</th>
+            <th> {{ __('invoices.Tax_Value') }}</th>
+            <th> {{ __('invoices.Total_with_tax') }}</th>
+            <th> {{ __('invoices.Invoice_Type') }}</th>
+            <th>{{ __('Doctors.Processes') }}</th>
         </tr>
         </thead>
         <tbody>

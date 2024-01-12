@@ -85,9 +85,9 @@ return [
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'numeric' => 'The :attribute يجيب ان يكون على الاقل  :min.',
+        'numeric' => 'The :attribute يجب ان يكون على الاقل  :min.',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute يجيب ان يكون على الاقل  :min characters.',
+        'string' => 'The :attribute يجب ان يكون على الاقل  :min characters.',
         'array' => 'The :attribute must have at least :min items.',
     ],
     'multiple_of' => 'The :attribute must be a multiple of :value.',

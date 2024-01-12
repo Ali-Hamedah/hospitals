@@ -44,6 +44,7 @@ class DoctorRepository implements DoctorRepositoryInterface
             $doctors->section_id = $request->section_id;
             $doctors->phone = $request->phone;
             $doctors->status = 1;
+            $doctors->number_of_statements = $request->number_of_statements;
             $doctors->save();
             // store trans
             $doctors->name = $request->name;
@@ -120,6 +121,7 @@ class DoctorRepository implements DoctorRepositoryInterface
                 $doctor->email = $request->email;
                 $doctor->section_id = $request->section_id;
                 $doctor->phone = $request->phone;
+                $doctor->number_of_statements = $request->number_of_statements;
                 $doctor->save();
                 // store trans
                 $doctor->name = $request->name;
@@ -141,7 +143,7 @@ class DoctorRepository implements DoctorRepositoryInterface
 
                 DB::commit();
                 session()->flash('edit');
-                return redirect()->back();
+                return redirect()->route('Doctors.index');
 
             }
             catch (\Exception $e) {
@@ -185,6 +187,6 @@ class DoctorRepository implements DoctorRepositoryInterface
         }
     }
 
-    
+
 
 }

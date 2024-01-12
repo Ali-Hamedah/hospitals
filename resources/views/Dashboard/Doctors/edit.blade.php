@@ -24,7 +24,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto"> {{trans('main-sidebar_trans.doctors')}}</h4><span
+                <h4 class="content-title mb-0 my-auto"> {{trans('main-sidebar.doctors')}}</h4><span
                     class="text-muted mt-1 tx-13 mr-2 mb-0">/
                {{trans('doctors.add_doctor')}}</span>
             </div>
@@ -129,6 +129,18 @@
                                 </div>
 
                             </div>
+
+
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-1">
+                                    <label for="exampleInputEmail1">
+                                        {{trans('doctors.appointmentsnumber')}}</label>
+                                </div>
+                                <div class="col-md-11 mg-t-5 mg-md-t-0">
+                                    <input class="form-control" name="number_of_statements" type="number" value="{{ $doctor->number_of_statements }}" autofocus>
+                                </div>
+                            </div>
+
 
                             <div class="row row-xs align-items-center mg-b-20">
                                 <div class="col-md-1">

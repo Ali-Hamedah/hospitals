@@ -1,13 +1,13 @@
-<button class="btn btn-primary pull-right" wire:click="show_form_add" type="button">اضافة مجموعة خدمات </button><br><br>
+<button class="btn btn-primary pull-right" wire:click="show_form_add" type="button">  {{ __('Services.add_Group_Services') }} </button><br><br>
 <div class="table-responsive">
         <table class="table text-md-nowrap" id="example1" data-page-length="50"style="text-align: center">
         <thead>
             <tr>
                 <th>#</th>
-                <th>الاسم</th>
-                <th>اجمالي العرض شامل الضريبة</th>
-                <th>الملاحظات</th>
-                <th>العمليات</th>
+                <th>{{ __('Services.name') }}</th>
+                <th> {{ __('Services.Total_offer_VAT') }}</th>
+                <th>{{ __('Website/website.notes') }}</th>
+                <th>{{ __('Doctors.Processes') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +26,6 @@
                 </tr>
                 @include('livewire.GroupServices.delete')
             @endforeach
-    
+
     </table>
 </div>

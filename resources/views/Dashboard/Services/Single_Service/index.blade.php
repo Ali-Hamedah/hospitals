@@ -1,6 +1,6 @@
 @extends('Dashboard.layouts.master')
 @section('title')
-    {{trans('main-sidebar_trans.Single_service')}}
+    {{trans('main-sidebar.Single_service')}}
 @stop
 @section('css')
 
@@ -12,8 +12,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{trans('main-sidebar_trans.Services')}}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{trans('main-sidebar_trans.Single_service')}}</span>
+                <h4 class="content-title mb-0 my-auto">{{trans('main-sidebar.Services')}}</h4><span
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{trans('main-sidebar.Single_service')}}</span>
             </div>
         </div>
     </div>
@@ -43,8 +43,8 @@
                                 <th> {{trans('Services.price')}}</th>
                                 <th> {{trans('doctors.Status')}}</th>
                                 <th> {{trans('Services.description')}}</th>
-                                <th>{{trans('sections_trans.created_at')}}</th>
-                                <th>{{trans('sections_trans.Processes')}}</th>
+                                <th>{{trans('sections.created_at')}}</th>
+                                <th>{{trans('sections.Processes')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -92,7 +92,7 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
- 
+
     <!--Internal  Notify js -->
     <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
     <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>

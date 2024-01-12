@@ -19,7 +19,7 @@
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                                {{trans('sections_trans.add_sections')}}
+                                {{trans('sections.add_sections')}}
                             </button>
                         </div>
                     </div>
@@ -31,10 +31,10 @@
                                     <tr>
                                         <th class="wd-15p border-bottom-0">#</th>
                                         <th class="wd-15p border-bottom-0">
-                                            {{ trans('sections_trans.name_sections') }}</th>
+                                            {{ trans('sections.name_sections') }}</th>
                                         <th class="wd-20p border-bottom-0">
-                                            {{ trans('sections_trans.created_at') }}</th>
-                                        <th class="wd-20p border-bottom-0">{{ trans('sections_trans.Processes') }}
+                                            {{ trans('sections.created_at') }}</th>
+                                        <th class="wd-20p border-bottom-0">{{ trans('sections.Processes') }}
                                         </th>
                                     </tr>
                                 </thead>

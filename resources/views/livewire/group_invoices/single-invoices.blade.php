@@ -7,11 +7,11 @@
     @endif
 
     @if ($InvoiceSaved)
-        <div class="alert alert-info">تم حفظ البيانات بنجاح.</div>
+        <div class="alert alert-info">   {{ __('Dashboard.messages.add') }}.</div>
     @endif
 
     @if ($InvoiceUpdated)
-        <div class="alert alert-info">تم تعديل البيانات بنجاح.</div>
+        <div class="alert alert-info">  {{ __('Dashboard.messages.edit') }}.</div>
     @endif
 
     @if($show_table)
@@ -21,9 +21,9 @@
             @csrf
             <div class="row">
                 <div class="col">
-                    <label>اسم المريض</label>
+                    <label> {{ __('patients.name') }}</label>
                     <select wire:model="patient_id" class="form-control" required>
-                        <option value=""  >-- اختار من القائمة --</option>
+                        <option value=""  >-- {{ __('patients.Select_from_list') }} --</option>
                         @foreach($Patients as $Patient)
                             <option value="{{$Patient->id}}">{{$Patient->name}}</option>
                         @endforeach
@@ -32,9 +32,9 @@
 
 
                 <div class="col">
-                    <label>اسم الدكتور</label>
+                    <label> {{ __('Doctors.name') }}</label>
                     <select wire:model="doctor_id"  wire:change="get_section" class="form-control"  id="exampleFormControlSelect1" required>
-                        <option value="" >-- اختار من القائمة --</option>
+                        <option value="" >-- {{ __('patients.Select_from_list') }} --</option>
                         @foreach($Doctors as $Doctor)
                             <option value="{{$Doctor->id}}">{{$Doctor->name}}</option>
                         @endforeach
@@ -43,16 +43,16 @@
 
 
                 <div class="col">
-                    <label>القسم</label>
+                    <label>{{ __('sections.name_sections') }}</label>
                     <input wire:model="section_id" type="text" class="form-control" readonly >
                 </div>
 
                 <div class="col">
-                    <label>نوع الفاتورة</label>
+                    <label> {{ __('invoices.Invoice_Type') }}</label>
                     <select wire:model="type" class="form-control" {{$updateMode == true ? 'disabled':''}}>
-                        <option value="" >-- اختار من القائمة --</option>
-                        <option value="1">نقدي</option>
-                        <option value="2">اجل</option>
+                        <option value="">-- {{ __('patients.Select_from_list') }} --</option>
+                        <option value="1">{{ __('invoices.cash') }}</option>
+                        <option value="2">{{ __('invoices.postpone') }}</option>
                     </select>
                 </div>
 
@@ -73,12 +73,12 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>اسم الخدمة</th>
-                                        <th>سعر الخدمة</th>
-                                        <th>قيمة الخصم</th>
-                                        <th>نسبة الضريبة</th>
-                                        <th>قيمة الضريبة</th>
-                                        <th>الاجمالي مع الضريبة</th>
+                                        <th> {{ __('Services.name') }}</th>
+                                        <th> {{ __('Services.price') }}</th>
+                                        <th> {{ __('invoices.Discount') }}</th>
+                                        <th> {{ __('invoices.Tax_Rate') }}</th>
+                                        <th> {{ __('invoices.Tax_Value') }}</th>
+                                        <th>   {{ __('invoices.Total_with_tax') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -86,7 +86,7 @@
                                         <th scope="row">1</th>
                                         <td>
                                             <select wire:model="Group_id" class="form-control" wire:change="get_price" id="exampleFormControlSelect1">
-                                                <option value="">-- اختار الخدمة --</option>
+                                                <option value="">-- {{ __('invoices.Select_Service') }} --</option>
                                                 @foreach($Groups as $Group)
                                                     <option value="{{$Group->id}}">{{$Group->name}}</option>
                                                 @endforeach
@@ -105,7 +105,7 @@
                     </div><!-- bd -->
                 </div>
             </div>
-            <input class="btn btn-outline-success" type="submit" value="تاكيد البيانات">
+            <input class="btn btn-outline-success" type="submit" value="{{ __('Doctors.submit') }}">
         </form>
     @endif
 

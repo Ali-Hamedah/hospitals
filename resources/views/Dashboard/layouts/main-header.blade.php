@@ -31,16 +31,23 @@
                             aria-expanded="false">
                             @if (App::getLocale() == 'ar')
                                 <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('Dashboard/img/flags/egypt_flag.jpg') }}"
+                                        src="{{ URL::asset('Dashboard/img/flags/YE.png') }}"
                                         alt="img"></span>
                                 <strong
                                     class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
-                            @else
+                            @elseif (App::getLocale() == 'en')
                                 <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img
                                         src="{{ URL::asset('Dashboard/img/flags/us_flag.jpg') }}"
                                         alt="img"></span>
                                 <strong
                                     class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
+                                    @else
+                                    <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img
+                                        src="{{ URL::asset('Dashboard/img/flags/AT.png') }}"
+                                        alt="img"></span>
+                                <strong
+                                    class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
+
                             @endif
                             <div class="my-auto">
                             </div>
@@ -51,8 +58,10 @@
                                     href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                     @if ($properties['native'] == 'English')
                                         <i class="flag-icon flag-icon-us"></i>
+                                        @elseif ($properties['native'] == 'Deutsch')
+                                        <i class="flag-icon flag-icon-at"></i>
                                     @elseif($properties['native'] == 'العربية')
-                                        <i class="flag-icon flag-icon-eg"></i>
+                                        <i class="flag-icon flag-icon-ye"></i>
                                     @endif
                                     {{ $properties['native'] }}
                                 </a>
@@ -110,23 +119,25 @@
                             @endif
                         </div>
                         <div class="main-message-list chat-scroll">
-                            @if (Auth::guard('patient')->check())
-                                @if (App\Models\Message::ChekPatient()->count() > 0)
-                                    <a href="{{ route('chat.doctors') }}" class="p-3 d-flex border-bottom">
-                                        <div class="  drop-img  cover-image  "
-                                            data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
-                                            <span class="avatar-status bg-teal"></span>
+
+                            @if (Auth::guard('admin')->check())
+                            @if (App\Models\Message::ChekAdmin()->count() > 0)
+                                <a href="{{ route('chat.doctors') }}" class="p-3 d-flex border-bottom">
+                                    <div class="  drop-img  cover-image  "
+                                        data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
+                                        <span class="avatar-status bg-teal"></span>
+                                    </div>
+                                    <div class="wd-90p">
+                                        <div class="d-flex">
+                                            <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
                                         </div>
-                                        <div class="wd-90p">
-                                            <div class="d-flex">
-                                                <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
-                                            </div>
-                                            <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
-                                            <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
-                                        </div>
-                                    </a>
-                                @endif
+                                        <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
+                                        <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
+                                    </div>
+                                </a>
                             @endif
+                        @endif
+
                             @if (Auth::guard('doctor')->check())
                                 @if (App\Models\Message::ChekDoctor()->count() > 0)
                                     <a href="{{ route('chat.patients') }}" class="p-3 d-flex border-bottom">
@@ -144,6 +155,24 @@
                                     </a>
                                 @endif
                             @endif
+
+                            @if (Auth::guard('patient')->check())
+                            @if (App\Models\Message::ChekPatient()->count() > 0)
+                                <a href="{{ route('chat.doctors') }}" class="p-3 d-flex border-bottom">
+                                    <div class="  drop-img  cover-image  "
+                                        data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
+                                        <span class="avatar-status bg-teal"></span>
+                                    </div>
+                                    <div class="wd-90p">
+                                        <div class="d-flex">
+                                            <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
+                                        </div>
+                                        <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
+                                        <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
+                                    </div>
+                                </a>
+                            @endif
+                        @endif
                         </div>
                         <div class="text-center dropdown-footer">
                             <a href="text-center">VIEW ALL</a>

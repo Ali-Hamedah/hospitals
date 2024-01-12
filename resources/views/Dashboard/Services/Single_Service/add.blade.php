@@ -22,8 +22,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('sections_trans.Close')}}</button>
-                    <button type="submit" class="btn btn-primary">{{trans('sections_trans.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('sections.Close')}}</button>
+                    <button type="submit" class="btn btn-primary">{{trans('sections.submit')}}</button>
                 </div>
             </form>
         </div>

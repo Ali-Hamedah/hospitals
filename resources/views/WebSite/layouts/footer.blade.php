@@ -28,16 +28,16 @@
                         <div class="footer-column col-lg-5 col-md-6 col-sm-12">
                             <div class="footer-widget links-widget">
                                 <div class="footer-title  clearfix">
-                                    <h2>الإدارات</h2>
+                                    <h2>{{ __('Website/website.departments') }}</h2>
                                     <div class="separator"></div>
                                 </div>
                                 <ul class="footer-list">
-                                    <li><a href="#">الجراحة والأشعة</a></li>
-                                    <li><a href="#">طب الأسرة</a></li>
-                                    <li><a href="#">صحة المرأة</a></li>
-                                    <li><a href="#">اخصائي نظارات</a></li>
-                                    <li><a href="#">طب الأطفال</a></li>
-                                    <li><a href="#">الجلدية</a></li>
+                                    <li><a href="#"> {{ __('Website/website.surgery_and_radiology') }}</a></li>
+                                    <li><a href="#"> {{ __('Website/website.family_medicine') }}</a></li>
+                                    <li><a href="#"> {{ __('Website/website.womens_health') }}</a></li>
+                                    <li><a href="#">{{ __('Website/website.dermatology') }} </a></li>
+                                    <li><a href="#"> {{ __('Website/website.pediatrics') }}</a></li>
+                                    <li><a href="#">{{ __('Website/website.ophthalmologist') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                         <div class="footer-column col-lg-6 col-md-6 col-sm-12">
                             <div class="footer-widget news-widget">
                                 <div class="footer-title  clearfix">
-                                    <h2>تحديث الأخبار</h2>
+                                    <h2> {{ __('Website/website.update_news') }}</h2>
                                     <div class="separator"></div>
                                 </div>
 
@@ -84,10 +84,10 @@
                         </div>
 
                         <!--Footer Column-->
-                        <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                        <div class="footer-column col-lg-6 col-md-6 col-sm-12" id="contact">
                             <div class="footer-widget contact-widget">
                                 <div class="footer-title  clearfix">
-                                    <h2>اتصل بنا</h2>
+                                    <h2> {{ __('Website/website.ophthalmologist') }}</h2>
                                     <div class="separator"></div>
                                 </div>
 
@@ -95,10 +95,10 @@
                                     <li><span class="icon flaticon-placeholder"></span>2130 شارع فولتون في سان دييغو<br> CA 94117-1080 الولايات المتحدة الأمريكية
 
                                     </li>
-                                    <li><span class="icon flaticon-call"></span>من الإثنين إلى الجمعة: من الساعة 8:30 صباحًا حتى الساعة 18:00 مساءً<br> <a
+                                    <li><span class="icon flaticon-call"></span>   {{ __('Website/website.Monday_to_Friday') }}:   {{ __('Website/website.From_8:30am_to_18:00pm') }}<br> <a
                                             href="tel:+898-68679-575-09">+898 68679 575 09</a></li>
-                                    <li><span class="icon flaticon-message"></span>هل لديك سؤال ؟ <a
-                                            href="mailto:info@gmail.com">info@gmail.com</a></li>
+                                    <li><span class="icon flaticon-message"></span> {{ __('Website/website.do_you_have_question') }} <a
+                                            href="mailto:info@gmail.com">aliali735522@gmail.com</a></li>
                                 </ul>
 
                             </div>
@@ -114,7 +114,7 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom">
         <div class="auto-container">
-            <div class="copyright">MediTech Helth Care &copy; All Rights Reserved By MoraSoft</div>
+            <div class="copyright">ALI HAMEDAH &copy; All Rights Reserved By MoraSoft</div>
         </div>
     </div>
 

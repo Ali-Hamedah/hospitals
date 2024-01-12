@@ -1,6 +1,6 @@
 @extends('Dashboard.layouts.master')
 @section('title')
-    {{ trans('main-sidebar_trans.doctors') }}
+    {{ trans('main-sidebar.doctors') }}
 @stop
 @section('css')
     <!--Internal   Notify -->
@@ -13,9 +13,9 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{ trans('main-sidebar_trans.doctors') }}</h4>
+                <h4 class="content-title mb-0 my-auto">{{ trans('main-sidebar.doctors') }}</h4>
                 <span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    {{ trans('main-sidebar_trans.view_all') }}</span>
+                    {{ trans('main-sidebar.view_all') }}</span>
             </div>
         </div>
     </div>
@@ -50,6 +50,7 @@
                                     <th>{{ trans('doctors.phone') }}</th>
                                     <th>{{ trans('doctors.appointments') }}</th>
                                     <th>{{ trans('doctors.price') }}</th>
+                                    <th>{{ trans('Doctors.appointmentsnumber') }}</th>
                                     <th>{{ trans('doctors.Status') }}</th>
                                     <th>{{ trans('doctors.created_at') }}</th>
                                     <th>{{ trans('doctors.Processes') }}</th>
@@ -81,6 +82,7 @@
                                             @endforeach
                                         </td>
                                         <td>{{ $doctor->price }}</td>
+                                        <td>{{ $doctor->number_of_statements }}</td>
                                         <td>
                                             <div
                                                 class="dot-label bg-{{ $doctor->status == 1 ? 'success' : 'danger' }} ml-1">
@@ -100,17 +102,17 @@
                                                     <a class="dropdown-item"
                                                         href="{{ route('Doctors.edit', $doctor->id) }}"><i
                                                             style="color: #0ba360"
-                                                            class="text-success ti-user"></i>&nbsp;&nbsp;تعديل البيانات</a>
+                                                            class="text-success ti-user"></i>&nbsp;&nbsp; {{ trans('doctors.Data_Edit') }}</a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#update_password{{ $doctor->id }}"><i
-                                                            class="text-primary ti-key"></i>&nbsp;&nbsp;تغير كلمة المرور</a>
+                                                            class="text-primary ti-key"></i>&nbsp;&nbsp;  {{ trans('doctors.update_password') }}</a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#update_status{{ $doctor->id }}"><i
-                                                            class="text-warning ti-back-right"></i>&nbsp;&nbsp;تغير
-                                                        الحالة</a>
+                                                            class="text-warning ti-back-right"></i>&nbsp;&nbsp;
+                                                            {{ trans('doctors.Status_change') }}</a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#delete{{ $doctor->id }}"><i
-                                                            class="text-danger  ti-trash"></i>&nbsp;&nbsp;حذف البيانات</a>
+                                                            class="text-danger  ti-trash"></i>&nbsp;&nbsp; {{ trans('doctors.Delete') }}</a>
 
                                                 </div>
                                             </div>

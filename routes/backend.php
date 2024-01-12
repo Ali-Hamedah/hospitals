@@ -3,6 +3,7 @@
 
 use App\Events\MyEvent;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\SectionController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Dashboard\SingleServiceController;
 use App\Http\Controllers\Dashboard\PaymentAccountController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\LaboratorieEmployeeController;
+use App\Http\Controllers\Dashboard\appointments\AppointmentController;
 
 
 /*
@@ -153,7 +155,11 @@ Route::group(
         //############################# end RayEmployee route ######################################
 
 
-
+        Route::get('appointments',[AppointmentController::class,'index'])->name('appointments.index');
+        Route::put('appointments/approval/{id}',[AppointmentController::class,'approval'])->name('appointments.approval');
+        Route::get('appointments/approval',[AppointmentController::class,'indexConfirmed'])->name('appointments.indexConfirmed');
+        Route::delete('appointments/destroy/{id}',[AppointmentController::class,'destroy'])->name('appointments.destroy');
+        Route::get('appointments/indexExpired',[AppointmentController::class,'indexExpired'])->name('appointments.indexExpired');
 
 
     });
