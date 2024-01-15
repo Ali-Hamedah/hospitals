@@ -31,11 +31,11 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th> المطلوب</th>
-                                <th>اسم الدكتور</th>
-                                <th>اسم دكتور المختبر</th>
-                                <th> ملاحظة المختبر</th>
-                                <th>  العمليات</th>
+                                <th> {{ __('insurance.notes') }}</th>
+                                <th> {{ __('Doctors.name') }}</th>
+                                <th> {{ __('laboratorie_employee.Laboratory_Doctor_Name') }}</th>
+                                <th> {{ __('laboratorie_employee.Laboratory_Note') }}</th>
+                                <th>  {{ __('Doctors.Processes') }}</th>
 
                             </tr>
                             </thead>
@@ -49,7 +49,7 @@
                                     <td>{{ $laboratorie->description_employee }}</td>
                                     <td>
                                         @if($laboratorie->employee_id !== null)
-                                            <a class="btn btn-primary btn-sm" href="{{route('view_laboratories',$laboratorie->id)}}" role="button">عرض التحليل</a>
+                                            <a class="btn btn-primary btn-sm" href="{{route('view_laboratories',$laboratorie->id)}}" role="button"> {{ __('laboratorie_employee.View_analysis') }}</a>
                                         @endif                                                   </td>
 
 

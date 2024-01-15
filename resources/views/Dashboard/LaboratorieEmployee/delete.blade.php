@@ -14,11 +14,11 @@
                 {{ csrf_field() }}
             <div class="modal-body">
                 <input type="hidden" name="id" value="{{ $employee->id }}">
-                <h5>{{trans('sections_trans.Warning')}} {{ $employee->name }} </h5>
+                <h5>{{trans('sections.Warning')}} {{ $employee->name }} </h5>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('sections_trans.Close')}}</button>
-                <button type="submit" class="btn btn-danger">{{trans('sections_trans.submit')}}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('sections.Close')}}</button>
+                <button type="submit" class="btn btn-danger">{{trans('sections.submit')}}</button>
             </div>
             </form>
         </div>

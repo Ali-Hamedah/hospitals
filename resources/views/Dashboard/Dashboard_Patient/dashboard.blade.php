@@ -84,10 +84,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>تاريخ الفاتورة</th>
-                                <th>اسم المريض</th>
-                                <th>اسم الدكتور</th>
-                                <th>حالة الفاتورة</th>
+                                <th>{{ __('invoices.Invoice_Date') }}</th>
+                                <th> {{ __('patients.name') }}</th>
+                                <th>{{ __('Doctors.name') }}</th>
+                                <th>{{ __('Doctors.Status') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -106,7 +106,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                لاتوجد بيانات
+                               {{__('Dashboard/messages.No_data')}}
                             @endforelse
                         </tbody>
                     </table>

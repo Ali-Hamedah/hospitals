@@ -10,6 +10,7 @@ return [
     'doctor' =>'الدخول دكتور',
     'ray_employee' =>' موظف اشعة',
     'laboratorie_employee' =>' موظف مختبر',
+    'Sign_out' => 'تسجيل الخروج',
 
 
 ];

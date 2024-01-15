@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">اضافة موظف جديد</h5>
+                <h5 class="modal-title" id="exampleModalLabel">  {{ __('laboratorie_employee.Add_New_Employee') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,7 +11,7 @@
             <form action="{{ route('laboratorie_employee.store') }}" method="post" autocomplete="off" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    <label for="name">{{trans('Services.name')}}</label>
+                    <label for="name">{{ __('laboratorie_employee.Name') }}</label>
                     <input type="text" name="name" id="name" class="form-control"><br>
 
                     <label for="email">{{trans('Doctors.email')}}</label>
@@ -32,8 +32,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('sections_trans.Close')}}</button>
-                    <button type="submit" class="btn btn-primary">{{trans('sections_trans.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('sections.Close')}}</button>
+                    <button type="submit" class="btn btn-primary">{{trans('sections.submit')}}</button>
                 </div>
             </form>
         </div>

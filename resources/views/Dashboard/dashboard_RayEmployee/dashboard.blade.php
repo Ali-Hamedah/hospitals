@@ -102,11 +102,11 @@
 
                             <tr>
                                 <th>#</th>
-                                <th>تاريخ الفاتورة</th>
-                                <th>اسم المريض</th>
-                                <th>اسم الدكتور</th>
-                                <th>المطلوب</th>
-                                <th>حالة الفاتورة</th>
+                                <th> {{ __('invoices.Invoice_Date') }}</th>
+                                <th> {{ __('patients.name') }}</th>
+                                <th> {{ __('Doctors.name') }}</th>
+                                <th>{{ __('insurance.notes') }}</th>
+                                <th>{{ __('Doctors.Status') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -121,9 +121,9 @@
 
                                     <td>
                                         @if ($invoice->case == 0)
-                                            <span class="badge badge-danger">تحت الاجراء</span>
+                                            <span class="badge badge-danger"> {{ __('laboratorie_employee.Under_procedure') }}</span>
                                         @else
-                                            <span class="badge badge-success">مكتملة</span>
+                                            <span class="badge badge-success">{{ __('laboratorie_employee.Complete') }}</span>
                                         @endif
                                     </td>
                                 </tr>

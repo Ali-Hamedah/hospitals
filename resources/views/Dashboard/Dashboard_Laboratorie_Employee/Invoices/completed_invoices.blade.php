@@ -12,8 +12,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الكشوفات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    الفواتير</span>
+                <h4 class="content-title mb-0 my-auto">{{ __('main-sidebar.List_statements') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                    {{ __('main-sidebar.Invoices') }}</span>
             </div>
         </div>
     </div>
@@ -32,12 +32,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>تاريخ الفاتورة</th>
-                                    <th>اسم المريض</th>
-                                    <th>اسم الدكتور</th>
-                                    <th>المطلوب</th>
-                                    <th>حالة الفاتورة</th>
-                                    <th>الاشعة</th>
+                                    <th> {{ __('invoices.Invoice_Date') }}</th>
+                                <th> {{ __('patients.name') }}</th>
+                                <th> {{ __('Doctors.name') }}</th>
+                                <th>{{ __('insurance.notes') }}</th>
+                                <th>{{ __('Doctors.Status') }}</th>
+                                <th>{{ __('laboratorie_employee.Analysis') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

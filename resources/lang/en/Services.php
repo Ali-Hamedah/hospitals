@@ -10,4 +10,9 @@ return array (
   'name' => 'Service Name',
   'price' => 'Price',
   'Total_offer_VAT' => 'Total offer incl. VAT',
+  'Number' => 'Number',
+  'Add_Sub-Service' => 'Add Sub-Service',
+  'Group_Name' => 'Group Name',
+  'Amount' => 'Amount',
+  'Statement' => 'Statement',
 );

@@ -19,7 +19,7 @@
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                           اضافة موظف جديد
+                                {{ __('laboratorie_employee.Add_New_Employee') }}
                             </button>
                         </div>
                     </div>
@@ -29,11 +29,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>الاسم</th>
-                                        <th>البريد الالكتروني</th>
-                                        <th>تاريخ الاضافة</th>
+                                        <th>{{ __('laboratorie_employee.Name') }}</th>
+                                        <th> {{ __('Doctors.email') }}</th>
+                                        <th> {{ __('Doctors.created_at') }}</th>
 
-                                        <th> العمليات</th>
+                                        <th> {{ __('Doctors.Processes') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -23,8 +23,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الكشوفات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    الفواتير</span>
+                <h4 class="content-title mb-0 my-auto">{{ __('main-sidebar.Statements') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                    {{ __('main-sidebar.Invoices') }}</span>
             </div>
         </div>
     </div>
@@ -43,16 +43,16 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>تاريخ الفاتورة</th>
-                                    <th>اسم الخدمة</th>
-                                    <th>اسم المريض</th>
-                                    <th>سعر الخدمة</th>
-                                    <th>قيمة الخصم</th>
-                                    <th>نسبة الضريبة</th>
-                                    <th>قيمة الضريبة</th>
-                                    <th>الاجمالي مع الضريبة</th>
-                                    <th>حالة الفاتورة</th>
-                                    <th>العمليات</th>
+                                    <th> {{ __('invoices.Invoice_Date') }}</th>
+                                    <th> {{ __('Services.name') }}</th>
+                                    <th> {{ __('patients.name') }}</th>
+                                    <th> {{trans('Services.price')}}</th>
+                                    <th> {{trans('invoices.Discount')}}</th>
+                                    <th> {{trans('invoices.Tax_Rate')}}</th>
+                                    <th> {{trans('invoices.Tax_Value')}}</th>
+                                    <th>  {{trans('invoices.Total_with_tax')}}</th>
+                                    <th>{{ __('Doctors.Status') }}</th>
+                                    <th>{{ __('Doctors.Processes') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,13 +77,13 @@
                                         <td>{{ number_format($invoice->tax_value, 2) }}</td>
                                         <td>{{ number_format($invoice->total_with_tax, 2) }}</td>
                                         <td>
-                                            @if ($invoice->invoice_status == 1)
-                                                <span class="badge badge-danger">تحت الاجراء</span>
-                                            @elseif($invoice->invoice_status == 2)
-                                                <span class="badge badge-warning">مراجعة</span>
-                                            @else
-                                                <span class="badge badge-success">مكتملة</span>
-                                            @endif
+                                            @if($invoice->invoice_status == 1)
+                                            <span class="badge badge-danger"> {{ __('laboratorie_employee.Under_procedure') }}</span>
+                                       @elseif($invoice->invoice_status == 2)
+                                            <span class="badge badge-warning">{{ __('laboratorie_employee.Review') }}</span>
+                                        @else
+                                           <span class="badge badge-success">{{ __('laboratorie_employee.Complete') }}</span>
+                                        @endif
                                         </td>
                                         <td>
                                             <div class="dropdown show">
@@ -91,7 +91,7 @@
                                                     role="button" id="dropdownMenuLink" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false"> <i
                                                         class="fas fa-chevron-down"></i>
-                                                    العمليات
+                                                        <th>{{ __('Doctors.Processes') }}</th>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     <a class="dropdown-item" data-target="#add_diagnosis{{ $invoice->id }}"

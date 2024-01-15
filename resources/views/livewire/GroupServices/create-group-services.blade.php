@@ -14,12 +14,12 @@
  <form wire:submit.prevent="saveGroup" autocomplete="off">
         @csrf
         <div class="form-group">
-            <label>اسم المجموعة</label>
+            <label> {{ __('Services.Group_Name') }}</label>
             <input wire:model="name_group" type="text" name="name_group" class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label>ملاحظات</label>
+            <label>{{ __('insurance.notes') }}</label>
             <textarea wire:model="notes" name="notes" class="form-control" rows="5"></textarea>
         </div>
 
@@ -27,7 +27,7 @@
             <div class="card-header">
                 <div class="col-md-12">
                     <button class="btn btn-outline-primary"
-                            wire:click.prevent="addService">اضافة خدمة فرعية
+                            wire:click.prevent="addService">  {{ __('Services.Add_Sub-Service') }}
                     </button>
                 </div>
             </div>
@@ -38,9 +38,9 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr class="table-primary">
-                            <th>اسم الخدمة</th>
-                            <th width="200">العدد</th>
-                            <th width="200">العمليات</th>
+                            <th> {{ __('Services.name') }}</th>
+                            <th width="200">{{ __('Services.Number') }}</th>
+                            <th width="200">{{ __('ambulances.Processes') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -87,16 +87,16 @@
                                     @if($groupItem['is_saved'])
                                         <button class="btn btn-sm btn-primary"
                                                 wire:click.prevent="editService({{$index}})">
-                                            تعديل
+                                            {{ __('Doctors.Data_Edit') }}
                                         </button>
                                     @elseif($groupItem['service_id'])
                                         <button class="btn btn-sm btn-success mr-1"
                                                 wire:click.prevent="saveService({{$index}})">
-                                            تاكيد
+                                                {{ __('Doctors.submit') }}
                                         </button>
                                     @endif
                                     <button class="btn btn-sm btn-danger"
-                                            wire:click.prevent="removeService({{$index}})">حذف
+                                            wire:click.prevent="removeService({{$index}})">  {{ __('Doctors.Delete') }}
                                     </button>
                                 </td>
                             </tr>
@@ -109,31 +109,31 @@
                 <div class="col-lg-4 ml-auto text-right">
                     <table class="table pull-right">
                         <tr>
-                            <td style="color: red">الاجمالي</td>
+                            <td style="color: red">  {{ __('invoices.Total') }}</td>
                             <td>{{ number_format($subtotal, 2) }}</td>
                         </tr>
 
                         <tr>
-                            <td style="color: red">قيمة الخصم</td>
+                            <td style="color: red"> {{ __('invoices.Discount') }}</td>
                             <td width="125">
                                 <input type="number" name="discount_value" class="form-control w-75 d-inline" wire:model="discount_value">
                             </td>
                         </tr>
 
                         <tr>
-                            <td style="color: red">نسبة الضريبة</td>
+                            <td style="color: red"> {{ __('invoices.Tax_Rate') }}</td>
                             <td>
                                 <input type="number" name="taxes" class="form-control w-75 d-inline" min="0" max="100" wire:model="taxes"> %
                             </td>
                         </tr>
                         <tr>
-                            <td style="color: red">الاجمالي مع الضريبة</td>
+                            <td style="color: red">  {{ __('invoices.Total_with_tax') }}</td>
                             <td>{{ number_format($total, 2) }}</td>
                         </tr>
                     </table>
                 </div> <br/>
                 <div>
-                    <input class="btn btn-outline-success" type="submit" value="تاكيد البيانات">
+                    <input class="btn btn-outline-success" type="submit" value="   {{ __('Doctors.submit') }}">
                 </div>
             </div>
         </div>

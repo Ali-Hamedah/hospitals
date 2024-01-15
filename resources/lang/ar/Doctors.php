@@ -36,6 +36,7 @@ return array (
   'Error' => 'خطا',
   'Data_Edit' => 'تعديل البيانات',
   'Delete' => 'حذف البيانات',
+  
 
 
 

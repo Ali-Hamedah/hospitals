@@ -10,7 +10,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>اسم الدكتور</th>
+                                <th> {{ __('Doctors.name') }}</th>
                             </tr>
                             </thead>
                             <tbody>

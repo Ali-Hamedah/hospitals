@@ -13,8 +13,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">المواعيد</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ المواعيد المنتهية</span>
+                <h4 class="content-title mb-0 my-auto">{{ __('main-sidebar.Appointments') }}</h4><span
+                class="text-muted mt-1 tx-13 mr-2 mb-0">/  {{ __('main-sidebar.List_Appointments') }}</span>
             </div>
         </div>
     </div>
@@ -33,13 +33,13 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>اسم المريض</th>
-                                <th>البريد الالكتروني</th>
-                                <th>القسم</th>
-                                <th>الدكتور</th>
-                                <th>تاريخ الموعد</th>
-                                <th>الهاتف</th>
-                                <th>العمليات</th>
+                                <th> {{ __('patients.name') }}</th>
+                                <th> {{ __('patients.email') }}</th>
+                                <th>{{ __('sections.name_sections') }}</th>
+                                <th>{{ __('Doctors.name') }}</th>
+                                <th>{{ __('patients.Phone') }}</th>
+                                <th>{{ __('insurance.notes') }}</th>
+                                <th>{{ __('insurance.Processes') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -53,7 +53,7 @@
                                     <td>{{$appointment->appointment}}</td>
                                     <td>{{$appointment->phone}}</td>
                                     <td>
-                                    
+
                                         <button class="btn btn-sm btn-danger" data-toggle="modal"
                                                 data-target="#Deleted{{$appointment->id}}"><i class="fas fa-remove-format"></i>
                                         </button>

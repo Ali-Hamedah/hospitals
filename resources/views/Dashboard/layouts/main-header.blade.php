@@ -324,7 +324,7 @@
                         <a class="dropdown-item" href="#"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();"><i
-                                class="bx bx-log-out"></i>تسجيل الخروج</a>
+                                class="bx bx-log-out"></i> {{ __('Dashboard/login_trans.Sign_out') }}</a>
                         </form>
 
                     </div>

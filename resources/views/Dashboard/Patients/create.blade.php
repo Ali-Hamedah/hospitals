@@ -69,8 +69,8 @@
                         <div class="col">
                             <label> {{ trans('patients.Gender') }}</label>
                             <select class="form-control" name="Gender">
-                                <option value="1">ذكر</option>
-                                <option value="2">انثى</option>
+                                <option value="1">{{ trans('patients.male') }}</option>
+                                <option value="2">{{ trans('patients.Female') }}</option>
                             </select>
                         </div>
 
@@ -89,7 +89,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-success">حفظ البيانات</button>
+                            <button class="btn btn-success"> {{ __('Doctors.submit') }}</button>
                         </div>
                     </div>
 

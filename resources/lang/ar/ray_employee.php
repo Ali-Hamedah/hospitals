@@ -15,4 +15,10 @@ return array (
   'Complete' => 'مكتملة',
   'Under_procedure' => 'تحت الإجراء',
   'Total_Payments' => ' اجمالي المدفوعات',
+  'x-ray_Doctor_Name' => 'اسم دكتور الاشعة',
+  'X-ray_images' => 'صور الاشعة',
+  'Attachments' => 'المرفقات',
+  'diagnosis' => 'التشخيص',
+  'Add_Diagnosis' => 'اضافة تشخيص',
+  'Doctor_x-ray_Notes' => 'ملاحظات دكتور الاشعة',
 );

@@ -12,8 +12,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{ trans('main-sidebar_trans.Services') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('main-sidebar_trans.Single_service') }}</span>
+                <h4 class="content-title mb-0 my-auto">{{ trans('main-sidebar.Services') }}</h4><span
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('main-sidebar.Single_service') }}</span>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('Patients.create') }}" class="btn btn-primary">اضافة سيارة جديدة</a>
+                        <a href="{{ route('Patients.create') }}" class="btn btn-primary">   {{ trans('patients.Add_new_patient') }}</a>
 
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                                         <td>{{ $patient->email }}</td>
                                         <td>{{ $patient->Date_Birth }}</td>
                                         <td>{{ $patient->Phone }}</td>
-                                        <td>{{$patient->Gender == 1 ? 'ذكر' :'انثي'}}</td>
+                                        <td>{{$patient->Gender == 1 ?  trans('patients.male')  : trans('patients.Female')  }}</td>
                                         <td>{{ $patient->Blood_Group }}</td>
                                         <td> {{ Str::limit($patient->Address, 50) }}</td>
                                         <td>

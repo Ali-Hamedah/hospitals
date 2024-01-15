@@ -10,4 +10,9 @@ return array (
   'name' => 'اسم الخدمة',
   'price' => 'سعر الخدمة',
   'Total_offer_VAT' => 'اجمالي العرض شامل الضريبة',
+  'Number' => 'العدد',
+  'Add_Sub-Service' => 'اضافة خدمة فرعية',
+  'Group_Name' => 'اسم المجموعة',
+  'Amount' => 'المبلغ',
+  'Statement' => 'البيان',
 );

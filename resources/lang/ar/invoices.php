@@ -8,8 +8,10 @@ return array (
   'Tax_Rate' => 'نسبة الضريبة',
   'Tax_Value' => 'قيمة الضريبة',
   'Total_with_tax' => 'الاجمالي مع الضريبة',
+  'Total' => 'الاجمالي',
   'Select_Service ' => ' اختار الخدمة ',
   'Invoice_Date' => 'تاريخ الفاتورة',
   'Add_invoice ' => 'اضافة فاتورة جديدة ',
+  'Review_Date ' => 'تاريخ المراجعة',
 
 );

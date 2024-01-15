@@ -1,0 +1,26 @@
+<?php
+
+return array (
+    'X-ray_employee_control_panel' => 'ray_employee control panel',
+    'Invoice_Date' => 'Invoice Date',
+    'Patient_Name' => 'Patient Name',
+    'Doctor_Name' => 'Doctor Name',
+    'Required' => ' Required',
+    'Invoice_Status' => 'Invoice Status',
+    'Total_Number_of_Invoices' => 'Total Number of Invoices',
+    'Total_number_of_invoices_under_procedure' => 'Total number of invoices under procedure',
+    'Total_number_of_completed_invoices' => 'Total number of completed invoices',
+    'X-ray_Detectors' => 'X-ray Detectors',
+    'Last_5_invoices' => 'Last 5 invoices',
+    'Complete' => 'Complete',
+    'Under_procedure' => 'Under procedure',
+    'Total_Payments' => 'Total Payments',
+    'x-ray_Doctor_Name' => 'x-ray Doctor Name',
+    'x-ray_Note' => 'x-ray Note',
+    'View_analysis' => 'View_analysis',
+    'X-ray_images' => 'ray images',
+    'Attachments' => 'Attachments',
+    'diagnosis' => 'diagnosis',
+    'Add_Diagnosis' => 'Add Diagnosis',
+    'Doctor_x-ray_Notes' => 'Doctor x-ray Notes',
+);

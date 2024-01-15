@@ -3,6 +3,7 @@
 return array (
   'laboratorie_control_panel' => 'لوحة تحكم موظفي المختبر ',
   'Invoice_Date' => 'تاريخ الفاتورة',
+  'Name' => 'الاسم',
   'Patient_Name' => ' اسم المريض ',
   'Doctor_Name' => 'تاريخ الميلاد',
   'Required' => ' المطلوب',
@@ -14,4 +15,11 @@ return array (
   'Last_5_invoices' => ' آخر 5 فواتير',
   'Complete' => 'مكتملة',
   'Under_procedure' => 'تحت الإجراء',
+  'Review' => 'مراجعة',
+  'Add_New_Employee' => 'اضافة موظف جديد',
+  'Confirmation_Patient_Appointment' => 'تاكيد موعد المريض',
+  'Laboratory_Doctor_Name' => 'اسم دكتور المختبر',
+  'Laboratory_Note' => 'ملاحظة المختبر',
+  'View_analysis' => 'عرض التحليل',
+  'Analysis' => ' التحليل',
 );
