@@ -13,4 +13,10 @@ class LaboratorieEmployee extends Authenticatable
     protected $fillable = ['name', 'email ', 'password'];
 
     // protected $guarded = [];
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
 }

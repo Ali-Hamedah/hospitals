@@ -91,8 +91,10 @@
                                                     role="button" id="dropdownMenuLink" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false"> <i
                                                         class="fas fa-chevron-down"></i>
-                                                        <th>{{ __('Doctors.Processes') }}</th>
+                                                        {{ __('Doctors.Processes') }}
                                                 </a>
+
+                                              
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     <a class="dropdown-item" data-target="#add_diagnosis{{ $invoice->id }}"
                                                         data-toggle="modal" href="#add_ff{{ $invoice->id }}">

@@ -86,7 +86,6 @@
                                                                         class="fe fe-calendar text-muted mr-1"></i>{{ $patient_record->date }}</span>
 
                                                                 <!-- زر الحذف -->
-
                                                                 <div>
                                                                     @if ($patient_record->doctor_id == auth()->user()->id)
                                                                         <a class="dropdown-item"
@@ -206,7 +205,7 @@
                                                                         </a>
 
                                                                         <a class="btn btn-danger btn-sm"
-                                                                            data-target="#delete{{ $patient_laboratorie->id }}"
+                                                                            data-target="#delete_laboratories{{ $patient_laboratorie->id }}"
                                                                             data-toggle="modal"
                                                                             href="#delete{{ $patient_laboratorie->id }}"
                                                                             title="حذف">

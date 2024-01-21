@@ -13,4 +13,9 @@ class Patient extends Authenticatable
     use HasFactory;
     public $translatedAttributes = ['name','Address'];
     public $fillable= ['email','Password','Date_Birth','Phone','Gender','Blood_Group'];
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

@@ -14,7 +14,7 @@
                 {{ method_field('delete') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <h5>{{trans('sections_trans.Warning')}}</h5>
+                    <h5>{{trans('sections.Warning')}}</h5>
                     <input type="hidden" value="1" name="page_id">
                     @if($patient_record->image)
                         <input type="hidden" name="filename" value="{{$patient_record->image->filename}}">
@@ -22,8 +22,8 @@
                     {{-- <input type="hidden" name="id" value="{{ $invoice->id }}"> --}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('sections_trans.Close')}}</button>
-                    <button type="submit" class="btn btn-danger">{{trans('sections_trans.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('sections.Close')}}</button>
+                    <button type="submit" class="btn btn-danger">{{trans('sections.submit')}}</button>
                 </div>
             </form>
         </div>

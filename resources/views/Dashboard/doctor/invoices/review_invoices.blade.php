@@ -83,9 +83,9 @@
                                            <span class="badge badge-success">{{ __('laboratorie_employee.Complete') }}</span>
                                         @endif
                                         </td>
-                                        <td style="color: red">
+                                        <td style="color: goldenrod">
                                             @if (\App\Models\Diagnostic::where(['invoice_id' => $invoice->id])->first()->review_date)
-                                                {{ \App\Models\Diagnostic::where(['invoice_id' => $invoice->id])->first()->review_date }}
+                                                {{\Carbon\Carbon::parse(\App\Models\Diagnostic::where(['invoice_id' => $invoice->id])->first()->review_date)->format('y-m-d H:i')}}
                                             @else
                                                 لا يوجد مراجعه
                                             @endif

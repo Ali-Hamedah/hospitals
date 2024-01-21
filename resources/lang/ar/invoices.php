@@ -9,9 +9,9 @@ return array (
   'Tax_Value' => 'قيمة الضريبة',
   'Total_with_tax' => 'الاجمالي مع الضريبة',
   'Total' => 'الاجمالي',
-  'Select_Service ' => ' اختار الخدمة ',
+  'Select_Service' => ' اختار الخدمة ',
   'Invoice_Date' => 'تاريخ الفاتورة',
-  'Add_invoice ' => 'اضافة فاتورة جديدة ',
-  'Review_Date ' => 'تاريخ المراجعة',
+  'Add_invoice' => 'اضافة فاتورة جديدة ',
+  'Review_Date' => 'تاريخ المراجعة',
 
 );

@@ -23,7 +23,7 @@ class InvoicesRepository implements InvoicesRepositoryInterface
         // ->get();
 
         $invoices = Invoice::where('doctor_id', Auth::user()->id)->where('invoice_status', 1)->get();
-        return view('Dashboard.Doctor.invoices.index', compact('invoices'));
+        return view('Dashboard.doctor.invoices.index', compact('invoices'));
     }
 
     public function completedInvoices()
