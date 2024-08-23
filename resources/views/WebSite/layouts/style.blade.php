@@ -1,4 +1,4 @@
-<title>برنامج المستشفيات</title>
+<title>برنامج المستشفيات</title>Hospital Program
 <!-- Stylesheets -->
 <link href="{{asset('WebSite/css/bootstrap.css')}}" rel="stylesheet">
 <link href="{{asset('WebSite/css/style.css')}}" rel="stylesheet">

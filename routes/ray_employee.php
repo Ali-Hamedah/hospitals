@@ -23,7 +23,7 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-
+     
 
         //################################ dashboard doctor ########################################
 

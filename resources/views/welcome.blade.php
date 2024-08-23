@@ -35,9 +35,8 @@
                                 </div>
                             </div>
 
-                        </div>
-
-                    </div>
+                        </div
+                     </div>
                 </div>
 
 
@@ -302,6 +301,7 @@
                                 </div>
                             </div>
 
+                            
                             <!-- Tab -->
                             <div class="tab" id="tab-gastrology">
                                 <div class="content">
@@ -428,13 +428,13 @@
                 <!-- Team Block -->
                 <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-
                         <div class="lower-content">
                             <h3><a href="#">الدكتورة أندريا جونيا</a></h3>
                             <div class="designation"> {{ __('Website/website.cardiac_surgeon') }} </div>
                         </div>
                     </div>
                 </div>
+                
 
                 <!-- Team Block -->
                 <div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">

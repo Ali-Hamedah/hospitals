@@ -2,6 +2,7 @@
 
 return array (
     'main' => 'الرئيسية',
+    'Hospital_Program' => 'برنامج المستشفيات',
     'sections' => 'الاقسام',
     'doctors' => 'الاطباء',
     'about_us' => 'من نحن',

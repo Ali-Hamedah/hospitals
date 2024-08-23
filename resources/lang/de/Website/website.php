@@ -2,6 +2,7 @@
 
 return array (
     'main' => 'Home',
+    'Hospital_Program' => 'Hospital Program',
     'sections' => 'Sections',
     'doctors' => 'Doctors',
     'about_us' => 'About us',
