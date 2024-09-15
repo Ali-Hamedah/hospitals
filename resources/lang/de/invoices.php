@@ -1,15 +1,14 @@
 <?php
 
 return array (
-  'Invoice_Type' => 'Invoice Type',
-  'cash' => 'cash',
-  'postpone' => 'postpone',
-  'Discount' => 'Discount',
-  'Tax_Rate' => 'Tax Rate',
-  'Tax_Value' => 'Tax Value',
-  'Total_with_tax' => 'Total with tax',
-  'Select_Service ' => 'Select Service',
-  'Invoice_Date' => 'Invoice Date',
-  'Add_invoice ' => 'Add new invoice ',
-
+  'Invoice_Type' => 'Rechnungsart',
+  'cash' => 'Bar',
+  'postpone' => 'Verschieben',
+  'Discount' => 'Rabatt',
+  'Tax_Rate' => 'Steuersatz',
+  'Tax_Value' => 'Steuerwert',
+  'Total_with_tax' => 'Gesamtbetrag inkl. Steuer',
+  'Select_Service' => 'Dienstleistung auswählen',
+  'Invoice_Date' => 'Rechnungsdatum',
+  'Add_invoice' => 'Neue Rechnung hinzufügen',
 );

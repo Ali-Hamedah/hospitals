@@ -28,6 +28,10 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
+                  
+                    <button class="btn btn-md btn-danger" data-toggle="modal"
+                                                data-target="#Deleteall"><i class="fas fa-delete">{{__('main-sidebar.Delete_Appointments')}} </i>
+                                        </button>
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="example1">
                             <thead>
@@ -55,12 +59,15 @@
                                     <td>
 
                                         <button class="btn btn-sm btn-danger" data-toggle="modal"
-                                                data-target="#Deleted{{$appointment->id}}"><i class="fas fa-remove-format"></i>
+                                                data-target="#Delete{{$appointment->id}}"><i class="fas fa-remove-format"></i>
                                         </button>
                                     </td>
                                 </tr>
+                                @include('Dashboard.appointments.delete_all')
+                                @include('Dashboard.appointments.delete')
+                               
                                  @include('Dashboard.appointments.approval')
-                                 @include('Dashboard.appointments.delete')
+                                 
                             @endforeach
                             </tbody>
                         </table>

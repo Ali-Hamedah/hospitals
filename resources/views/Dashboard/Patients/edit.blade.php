@@ -29,7 +29,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-3">
-                            <label>اسم المريض</label>
+                            <label>  {{ trans('patients.name') }}</label>
                             <input type="text" name="name"  value="{{$Patient->name}}" class="form-control @error('name') is-invalid @enderror " required>
                             <input type="hidden" name="id" value="{{$Patient->id}}">
                         </div>

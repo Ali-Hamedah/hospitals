@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'laboratorie_control_panel' => 'Laboratory staff control panel ',
+  'laboratorie_control_panel' => 'Laboratory Staff Control Panel',
   'Invoice_Date' => 'Invoice Date',
   'Name' => 'Name',
   'Patient_Name' => 'Patient Name',
@@ -9,18 +9,17 @@ return array (
   'Required' => 'Required',
   'Invoice_Status' => 'Invoice Status',
   'Total_Number_of_Invoices' => 'Total Number of Invoices',
-  'Total_number_of_invoices_under_procedure' => ' Total number of invoices under procedure',
-  'Total_number_of_completed_invoices' => 'Total number of completed invoices ',
-  'laboratorie_Detectors' => 'Laboratory Detectors',
-  'Last_5_invoices' => 'Last 5 invoices',
+  'Total_number_of_invoices_under_procedure' => 'Total Number of Invoices Under Procedure',
+  'Total_number_of_completed_invoices' => 'Total Number of Completed Invoices',
+  'laboratorie_Detectors' => 'Laboratory Reports',
+  'Last_5_invoices' => 'Last 5 Invoices',
   'Complete' => 'Complete',
-  'Under_procedure' => 'Under procedure',
+  'Under_procedure' => 'Under Procedure',
   'Review' => 'Review',
   'Add_New_Employee' => 'Add New Employee',
-  'Confirmation_Patient_Appointment' => 'Confirmation Patient Appointment',
+  'Confirmation_Patient_Appointment' => 'Confirm Patient Appointment',
   'Laboratory_Doctor_Name' => 'Laboratory Doctor Name',
   'Laboratory_Note' => 'Laboratory Note',
-  'View_analysis' => 'View_analysis',
+  'View_analysis' => 'View Analysis',
   'Analysis' => 'Analysis',
-
 );

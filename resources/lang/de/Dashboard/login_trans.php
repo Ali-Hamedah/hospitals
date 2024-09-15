@@ -2,10 +2,11 @@
 
 return [
 
-    'Welcome' =>'Welcome back',
-    'Select_Enter' =>'Select the entry method',
-     'Choose_list' =>'Choose from the list',
-     'user' =>'Log in as a patient',
-     'admin' =>'Log in as a amdin'
+    'Welcome' => 'Willkommen zurück',
+    'Select_Enter' => 'Wähle die Anmeldemethode',
+    'Choose_list' => 'Wähle aus der Liste',
+    'user' => 'Als Patient anmelden',
+    'admin' => 'Als Administrator anmelden'
 
 ];
+

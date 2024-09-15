@@ -1,21 +1,21 @@
 <?php
 
 return [
-    "Insurance" => 'Insurance Companies',
-    "Add_Insurance" => 'Add Insurance',
-    "Company_name" => 'Company Name',
-    "Company_code" => 'Company Code',
-    "discount_percentage" => 'Discount Percentage',
-    "Insurance_bearing_percentage" => 'Insurance Bearing Percentage',
-    "notes" => 'Notes',
-    "status" => 'Status',
-    "Processes" => 'Processes',
-    "Determine_percentage" => 'Determine percentage',
-    "save" => 'Save',
-    "edit_Insurance" => 'Edit Insurance Companies',
-    "close" => 'Close',
-    "Deleted" => 'Are you sure about the deletion process?',
-    "Title_deleted" => 'Data Deleted',
 
+    "Insurance" => 'Versicherungsgesellschaften',
+    "Add_Insurance" => 'Versicherung hinzufügen',
+    "Company_name" => 'Firmenname',
+    "Company_code" => 'Firmencode',
+    "discount_percentage" => 'Rabattprozentsatz',
+    "Insurance_bearing_percentage" => 'Versicherungsanteil',
+    "notes" => 'Notizen',
+    "status" => 'Status',
+    "Processes" => 'Prozesse',
+    "Determine_percentage" => 'Prozentsatz festlegen',
+    "save" => 'Speichern',
+    "edit_Insurance" => 'Versicherungsgesellschaften bearbeiten',
+    "close" => 'Schließen',
+    "Deleted" => 'Sind Sie sicher, dass Sie den Löschvorgang durchführen möchten?',
+    "Title_deleted" => 'Daten gelöscht',
 
 ];

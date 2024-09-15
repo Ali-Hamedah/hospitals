@@ -35,5 +35,6 @@ return array (
   'List_Appointments' => 'List Appointments',
   'List_confirmed_appointments' => 'List Confirmed Appointments',
   'List_Expired_Appointments' => 'List Expired Appointments',
+  'Delete_Appointments' => 'Delete appointments',
 
 );

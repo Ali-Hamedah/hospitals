@@ -7,6 +7,7 @@
             <!-- Swiper -->
             <div class="swiper-wrapper">
 
+                @if(App::getLocale() =='ar')
                 <div class="swiper-slide slide">
                     <div class="auto-container">
                         <div class="row clearfix">
@@ -38,8 +39,39 @@
                         </div
                      </div>
                 </div>
+                @elseif (App::getLocale() =='de')
+                <div class="swiper-slide slide">
+                    <div class="auto-container">
+                        <div class="row clearfix">
 
+                            <!-- Content Column -->
+                            <div class="content-column col-lg-6 col-md-12 col-sm-12">
+                                <div class="inner-column">
+                                    <h2>Ihr vertrauenswürdigster Gesundheitspartner fürs Leben.</h2>
+                                    <div class="text">We offer free consulting and the best project management for your
+                                        ideas, 100% delivery guaranteed.
+                                    </div>
+                                    <div class="btn-box">
+                                        <a href="#Appointments" class="theme-btn appointment-btn"><span class="txt">Appointment</span></a>
+                                        <a href="#services" class="theme-btn services-btn">Services</a>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <!-- Image Column -->
+                            <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                                <div class="inner-column">
+                                    <div class="image">
+                                        <img src="{{URL::asset('WebSite/images/main-slider/3.png')}}" alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                @else
                 <div class="swiper-slide slide">
                     <div class="auto-container">
                         <div class="row clearfix">
@@ -72,39 +104,8 @@
                     </div>
                 </div>
 
-
-                <div class="swiper-slide slide">
-                    <div class="auto-container">
-                        <div class="row clearfix">
-
-                            <!-- Content Column -->
-                            <div class="content-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
-                                    <h2>Ihr vertrauenswürdigster Gesundheitspartner fürs Leben.</h2>
-                                    <div class="text">We offer free consulting and the best project management for your
-                                        ideas, 100% delivery guaranteed.
-                                    </div>
-                                    <div class="btn-box">
-                                        <a href="#Appointments" class="theme-btn appointment-btn"><span class="txt">Appointment</span></a>
-                                        <a href="#services" class="theme-btn services-btn">Services</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Image Column -->
-                            <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
-                                    <div class="image">
-                                        <img src="{{URL::asset('WebSite/images/main-slider/3.png')}}" alt=""/>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
+                @endif
+             
             </div>
             <!-- Add Arrows -->
             <div class="swiper-button-next"></div>

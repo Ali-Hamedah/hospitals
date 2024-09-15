@@ -35,5 +35,6 @@ return array (
   'List_Appointments' => 'قائمة المواعيد',
   'List_confirmed_appointments' => 'قائمة المواعيد المؤكدة',
   'List_Expired_Appointments' => 'قائمة المواعيد المنتهية',
+  'Delete_Appointments' => 'حذف الموعيد',
 
 );

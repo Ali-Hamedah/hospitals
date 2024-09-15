@@ -160,7 +160,11 @@ Route::group(
         Route::get('appointments/approval',[AppointmentController::class,'indexConfirmed'])->name('appointments.indexConfirmed');
         Route::delete('appointments/destroy/{id}',[AppointmentController::class,'destroy'])->name('appointments.destroy');
         Route::get('appointments/indexExpired',[AppointmentController::class,'indexExpired'])->name('appointments.indexExpired');
+        Route::get('/get-appointments/{date}', [AppointmentController::class, 'getAppointments']);
+        Route::delete('appointments/deleteall',[AppointmentController::class,'deleteall'])->name('appointments.deleteall');
 
+
+        Route::get('show_notification_admin/{id}/{notification_id}', [AppointmentController::class, 'showNotification'])->name('show_notification_admin');
 
     });
 

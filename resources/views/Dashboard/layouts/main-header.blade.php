@@ -31,8 +31,7 @@
                             aria-expanded="false">
                             @if (App::getLocale() == 'ar')
                                 <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('Dashboard/img/flags/YE.png') }}"
-                                        alt="img"></span>
+                                        src="{{ URL::asset('Dashboard/img/flags/YE.png') }}" alt="img"></span>
                                 <strong
                                     class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
                             @elseif (App::getLocale() == 'en')
@@ -41,13 +40,11 @@
                                         alt="img"></span>
                                 <strong
                                     class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
-                                    @else
-                                    <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('Dashboard/img/flags/AT.png') }}"
-                                        alt="img"></span>
+                            @else
+                                <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img
+                                        src="{{ URL::asset('Dashboard/img/flags/AT.png') }}" alt="img"></span>
                                 <strong
                                     class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
-
                             @endif
                             <div class="my-auto">
                             </div>
@@ -58,7 +55,7 @@
                                     href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                     @if ($properties['native'] == 'English')
                                         <i class="flag-icon flag-icon-us"></i>
-                                        @elseif ($properties['native'] == 'Deutsch')
+                                    @elseif ($properties['native'] == 'Deutsch')
                                         <i class="flag-icon flag-icon-at"></i>
                                     @elseif($properties['native'] == 'العربية')
                                         <i class="flag-icon flag-icon-ye"></i>
@@ -100,7 +97,17 @@
                             </path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        <span class=" pulse-danger"></span></a>
+
+                        @if (Auth::guard('doctor')->check() && App\Models\Message::ChekDoctor()->count() > 0)
+                            <span class=" pulse-danger"></span>
+                    </a>
+                @elseif (Auth::guard('patient')->check() && App\Models\Message::ChekPatient()->count() > 0)
+                    <span class=" pulse-danger"></span></a>
+                @elseif (Auth::guard('admin')->check() && App\Models\Message::ChekAdmin()->count() > 0)
+                    <span class=" pulse-danger"></span></a>
+                    </a>
+                    @endif
+
                     <div class="dropdown-menu">
                         <div class="menu-header-content bg-primary text-right">
                             <div class="d-flex">
@@ -121,22 +128,22 @@
                         <div class="main-message-list chat-scroll">
 
                             @if (Auth::guard('admin')->check())
-                            @if (App\Models\Message::ChekAdmin()->count() > 0)
-                                <a href="{{ route('chat.doctors') }}" class="p-3 d-flex border-bottom">
-                                    <div class="  drop-img  cover-image  "
-                                        data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
-                                        <span class="avatar-status bg-teal"></span>
-                                    </div>
-                                    <div class="wd-90p">
-                                        <div class="d-flex">
-                                            <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
+                                @if (App\Models\Message::ChekAdmin()->count() > 0)
+                                    <a href="{{ route('chat.doctors') }}" class="p-3 d-flex border-bottom">
+                                        <div class="  drop-img  cover-image  "
+                                            data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
+                                            <span class="avatar-status bg-teal"></span>
                                         </div>
-                                        <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
-                                        <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
-                                    </div>
-                                </a>
+                                        <div class="wd-90p">
+                                            <div class="d-flex">
+                                                <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
+                                            </div>
+                                            <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
+                                            <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
+                                        </div>
+                                    </a>
+                                @endif
                             @endif
-                        @endif
 
                             @if (Auth::guard('doctor')->check())
                                 @if (App\Models\Message::ChekDoctor()->count() > 0)
@@ -157,22 +164,22 @@
                             @endif
 
                             @if (Auth::guard('patient')->check())
-                            @if (App\Models\Message::ChekPatient()->count() > 0)
-                                <a href="{{ route('chat.doctors') }}" class="p-3 d-flex border-bottom">
-                                    <div class="  drop-img  cover-image  "
-                                        data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
-                                        <span class="avatar-status bg-teal"></span>
-                                    </div>
-                                    <div class="wd-90p">
-                                        <div class="d-flex">
-                                            <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
+                                @if (App\Models\Message::ChekPatient()->count() > 0)
+                                    <a href="{{ route('chat.doctors') }}" class="p-3 d-flex border-bottom">
+                                        <div class="  drop-img  cover-image  "
+                                            data-image-src="{{ URL::asset('Dashboard/img/faces/3.jpg') }}">
+                                            <span class="avatar-status bg-teal"></span>
                                         </div>
-                                        <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
-                                        <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
-                                    </div>
-                                </a>
+                                        <div class="wd-90p">
+                                            <div class="d-flex">
+                                                <h5 class="mb-1 name">يوجد لديك رسائل غير مفروة</h5>
+                                            </div>
+                                            <p class="mb-0 desc" style="color: blue">اضغط هنا لعرض جميع الرسائل </p>
+                                            <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
+                                        </div>
+                                    </a>
+                                @endif
                             @endif
-                        @endif
                         </div>
                         <div class="text-center dropdown-footer">
                             <a href="text-center">VIEW ALL</a>
@@ -187,7 +194,7 @@
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
-                        @if (App\Models\Notification::CauntNotification()->count() > 0)
+                        @if (auth()->user() && App\Models\Notification::CauntNotification()->count() > 0)
                             <span class=" pulse"></span>
                     </a>
                     @endif
@@ -223,7 +230,7 @@
 
                             @foreach (App\Models\Notification::where('user_id', auth()->user()->id)->where('reader_status', 0)->get() as $notification)
                                 <a class="d-flex p-3 border-bottom"
-                                    href="{{ route('show_notification', $notification->id) }}">
+                                    href="{{ route('show_notification_admin', [$notification->id, 'notification_id' => $notification->id]) }}">
                                     <div class="notifyimg bg-pink">
                                         <i class="la la-file-alt text-white"></i>
                                     </div>

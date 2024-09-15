@@ -14,7 +14,7 @@ class Message extends Model
 
     public function scopeChekDoctor($query){
 
-        return $query->where(['read2' => 0, 'receiver_email' => Auth::guard('doctor')->user()->email]);
+        return $query->where(['read2' => 0, 'sender_email' => Auth::guard('doctor')->user()->email]);
 
     }
 
@@ -26,7 +26,7 @@ class Message extends Model
 
     public function scopeChekPatient($query){
 
-        return $query->where(['read1' => 0]);
+        return $query->where(['read1' => 0, 'receiver_email' => Auth::guard('patient')->user()->email]);
 
     }
 }
