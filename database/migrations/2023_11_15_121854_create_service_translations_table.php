@@ -18,7 +18,7 @@ class CreateServiceTranslationsTable extends Migration
             $table->string('locale')->index();
             $table->string('name');
             $table->unique(['Service_id','locale','name']);
-            $table->foreignId('Service_id')->references('id')->on('Services')->onDelete('cascade');
+            $table->foreignId('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 
