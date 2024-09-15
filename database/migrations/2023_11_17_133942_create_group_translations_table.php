@@ -19,7 +19,7 @@ class CreateGroupTranslationsTable extends Migration
             $table->string('name');
             $table->string('notes')->nullable();
             $table->unique(['Group_id','locale','name']);
-            $table->foreignId('Group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreignId('group_id')->references('id')->on('groups')->onDelete('cascade');
         });
     }
 
